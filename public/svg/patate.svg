@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="patate_svg_file" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 250 250" style="enable-background:new 0 0 615.1 280.6;" xml:space="preserve">
+	<g> 
+		<path fill="#0034D2" opacity="0.6" d="M149.387,2.402 c-16.1-3.203-32.673-3.203-48.772,0l9.314,46.827c9.95-1.979,20.193-1.979,30.144,0L149.387,2.402z" style="opacity: 0.6;"></path> 
+		<path fill="#0034D2" opacity="0.2" d="M146.373,17.557l-6.301,31.673 c9.95,1.98,19.414,5.899,27.849,11.536l17.941-26.85C173.901,25.922,160.482,20.364,146.373,17.557L146.373,17.557z" style="opacity: 0.2;"></path> 
+		<path fill="#0034D2" opacity="0.4" d="M190.155,27.49l-22.234,33.275 c8.438,5.636,15.679,12.879,21.315,21.314l33.274-22.232C213.956,47.042,202.96,36.047,190.155,27.49z" style="opacity: 0.4;"></path> 
+		<path fill="#0034D2" opacity="0.2" d="M216.087,64.139L189.236,82.08 c5.635,8.437,9.557,17.9,11.537,27.85l31.671-6.3C229.637,89.52,224.081,76.101,216.087,64.139z" style="opacity: 0.2;"></path> 
+		<path fill="#0034D2" opacity="0.6" d="M247.599,100.614 l-46.825,9.315c0.985,4.963,1.483,10.01,1.483,15.072s-0.498,10.109-1.483,15.072l46.825,9.314 C250.801,133.288,250.801,116.715,247.599,100.614L247.599,100.614z" style="opacity: 0.6;"></path> 
+		<path fill="#0034D2" opacity="0.2" d="M232.444,146.374 l-31.671-6.301c-1.98,9.95-5.902,19.414-11.537,27.85l26.851,17.941C224.081,173.902,229.637,160.482,232.444,146.374 L232.444,146.374z" style="opacity: 0.2;"></path> 
+		<path fill="#0034D2" opacity="0.4" d="M222.511,190.156 l-33.274-22.233c-5.637,8.435-12.878,15.678-21.315,21.314l22.234,33.275C202.96,213.955,213.956,202.961,222.511,190.156z" style="opacity: 0.4;"></path> 
+		<path fill="#0034D2" id="path4537" opacity="0.2" d="M167.921,189.237 c-8.435,5.637-17.898,9.557-27.849,11.536l6.301,31.671c14.109-2.806,27.528-8.365,39.489-16.355L167.921,189.237L167.921,189.237z" style="opacity: 0.2;"></path> 
+		<path fill="#0034D2" opacity="0.6" d="M140.072,200.773 c-9.95,1.979-20.193,1.979-30.144,0l-9.314,46.826c16.1,3.202,32.673,3.202,48.772,0L140.072,200.773z" style="opacity: 0.6;"></path> 
+		<path fill="#0034D2" id="path4541" opacity="0.2" d="M109.929,200.773 c-9.95-1.979-19.412-5.899-27.849-11.536l-17.941,26.852c11.961,7.99,25.38,13.55,39.488,16.355L109.929,200.773L109.929,200.773z" style="opacity: 0.2;"></path> 
+		<path fill="#0034D2" opacity="0.4" d="M82.08,189.237 c-8.437-5.637-15.679-12.88-21.315-21.314l-33.273,22.233c8.556,12.805,19.548,23.799,32.355,32.356L82.08,189.237L82.08,189.237z" style="opacity: 0.4;"></path> 
+		<path fill="#0034D2" id="path4545" opacity="0.2" d="M49.229,140.073l-31.675,6.301 c2.808,14.108,8.365,27.528,16.359,39.49l26.851-17.941C55.127,159.487,51.208,150.023,49.229,140.073z" style="opacity: 0.2;"></path> 
+		<path fill="#0034D2" opacity="0.6" d="M47.744,125.001 c0-5.062,0.498-10.109,1.485-15.072l-46.826-9.315c-3.203,16.101-3.203,32.674,0,48.773l46.826-9.314 C48.242,135.11,47.744,130.063,47.744,125.001L47.744,125.001z" style="opacity: 0.6;"></path> 
+		<path fill="#0034D2" opacity="0.2" d="M60.765,82.08L33.914,64.139 C25.92,76.101,20.362,89.52,17.555,103.629l31.675,6.3C51.208,99.979,55.127,90.516,60.765,82.08L60.765,82.08z" style="opacity: 0.2;"></path> 
+		<path fill="#0034D2" id="path4551" opacity="0.4" d="M59.847,27.49 c-12.808,8.557-23.8,19.551-32.355,32.357L60.765,82.08c5.637-8.435,12.879-15.679,21.315-21.314L59.847,27.49z" style="opacity: 0.4;"></path> 
+		<path fill="#0034D2" opacity="0.2" d="M103.627,17.557 C89.519,20.364,76.1,25.922,64.139,33.915l17.941,26.85c8.437-5.637,17.898-9.556,27.849-11.536L103.627,17.557L103.627,17.557z" style="opacity: 0.2;"></path> 
+	</g> 
+	<g><text transform="matrix(1 0 0 1 117.665 32.8179)" fill="#0034D2" font-family="'Arial'" font-size="20.3125">N</text></g> 
+	<g><text transform="matrix(1 0 0 1 43.4873 62.3706)" fill="#0034D2" font-family="'Arial'" font-size="16.4566">NO</text></g> 
+	<g><text transform="matrix(1 0 0 1 184.2627 62.3706)" fill="#0034D2" font-family="'Arial'" font-size="16.4566">NE</text></g> 
+	<g><text transform="matrix(1 0 0 1 184.2627 199.5898)" fill="#0034D2" font-family="'Arial'" font-size="16.4566">SE</text></g> 
+	<g><text transform="matrix(1 0 0 1 118.2256 232.4443)" fill="#0034D2" font-family="'Arial'" font-size="20.3125">S</text></g> 
+	<g><text transform="matrix(1 0 0 1 16.6084 132.6563)" fill="#0034D2" font-family="'Arial'" font-size="20.3125">O</text></g> 
+	<g><text transform="matrix(1 0 0 1 42.8125 199.5908)" fill="#0034D2" font-family="'Arial'" font-size="16.4566">SO</text></g> 
+	<g><text transform="matrix(1 0 0 1 218.5107 132.6563)" fill="#0034D2" font-family="'Arial'" font-size="20.3125">E</text></g>
+	<g>
+		<path id="fleche" fill="#00DBB1" opacity="0.9" style="transform-origin: 125px 125px 0px; display: block; transform: rotate(160deg);" d="M125,47.744L70.373,179.631 L125,154.566l54.628,25.064L125,47.744z"></path> 
+	</g> 
+		<g><text transform="matrix(1 0 0 1 117.665 32.8179)" fill="#2a4999" font-family="'Arial'" font-size="20.3125">N</text></g> 
+		<g><text transform="matrix(1 0 0 1 43.4873 62.3706)" fill="#2a4999" font-family="'Arial'" font-size="16.4566">NO</text></g> 
+		<g><text transform="matrix(1 0 0 1 184.2627 62.3706)" fill="#2a4999" font-family="'Arial'" font-size="16.4566">NE</text></g> 
+		<g><text transform="matrix(1 0 0 1 184.2627 199.5898)" fill="#2a4999" font-family="'Arial'" font-size="16.4566">SE</text></g>
+</svg>
