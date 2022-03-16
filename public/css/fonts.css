@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'walkway_expandregular';
+    src: url('./fonts/walkway_expand-webfont.eot');
+    src: url('./fonts/walkway_expand-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/walkway_expand-webfont.woff') format('woff'),
+         url('./fonts/walkway_expand-webfont.ttf') format('truetype'),
+         url('./fonts/walkway_expand-webfont.svg#walkway_expandregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'walkway_expand_blackregular';
+    src: url('./fonts/walkway_expand_black-webfont.eot');
+    src: url('./fonts/walkway_expand_black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/walkway_expand_black-webfont.woff') format('woff'),
+         url('./fonts/walkway_expand_black-webfont.ttf') format('truetype'),
+         url('./fonts/walkway_expand_black-webfont.svg#walkway_expand_blackregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'walkway_expand_boldregular';
+    src: url('./fonts/walkway_expand_bold-webfont.eot');
+    src: url('./fonts/walkway_expand_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/walkway_expand_bold-webfont.woff') format('woff'),
+         url('./fonts/walkway_expand_bold-webfont.ttf') format('truetype'),
+         url('./fonts/walkway_expand_bold-webfont.svg#walkway_expand_boldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'walkway_expand_semiboldRg';
+    src: url('./fonts/walkway_expand_semibold-webfont.eot');
+    src: url('./fonts/walkway_expand_semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/walkway_expand_semibold-webfont.woff') format('woff'),
+         url('./fonts/walkway_expand_semibold-webfont.ttf') format('truetype'),
+         url('./fonts/walkway_expand_semibold-webfont.svg#walkway_expand_semiboldRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'walkway_expand_ultraboldRg';
+    src: url('./fonts/walkway_expand_ultrabold-webfont.eot');
+    src: url('./fonts/walkway_expand_ultrabold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/walkway_expand_ultrabold-webfont.woff') format('woff'),
+         url('./fonts/walkway_expand_ultrabold-webfont.ttf') format('truetype'),
+         url('./fonts/walkway_expand_ultrabold-webfont.svg#walkway_expand_ultraboldRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'droid';
+    src: url('./fonts/droidsans-webfont.eot');
+    src: url('./fonts/droidsans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/droidsans-webfont.woff') format('woff'),
+         url('./fonts/droidsans-webfont.ttf') format('truetype'),
+         url('./fonts/droidsans-webfont.svg#droid') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'droid_bold';
+    src: url('./fonts/droidsans-bold-webfont.eot');
+    src: url('./fonts/droidsans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/droidsans-bold-webfont.woff') format('woff'),
+         url('./fonts/droidsans-bold-webfont.ttf') format('truetype'),
+         url('./fonts/droidsans-bold-webfont.svg#droid_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

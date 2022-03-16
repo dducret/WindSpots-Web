@@ -1,0 +1,390 @@
+/* modals => login - subscription - reset_pw // config - profile - change_pw */
+/*#loginWrapper, #userConfigWrapper, #userProfileWrapper, #userChangePwWrapper, #betaWrapper{*/
+.modal{
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	position: fixed;
+	z-index: 1100;
+	background-color: rgba(51,51,51,0.6);
+	display: none;
+}
+#advertisingWrapper{
+	width: 100%;
+	height: 100%;
+	display: block;
+	top: 0px;
+	/*position: fixed;
+	top: 0px;
+	left: 0px;*/
+	/*position: absolute;
+	left: -10000px;*/
+	z-index: 1100;
+	background-color: rgba(51,51,51,0.9);
+	/*display: block;*/
+}
+
+/*#loginWrapper label, #userConfigWrapper label, #userProfileWrapper label, #userChangePwWrapper label, #betaWrapper label{*/
+.modal label{
+	margin: 5px;
+	font-style: italic;
+		color: #0034D2;
+}
+/*#loginWrapper input, #userConfigWrapper input, #userProfileWrapper input, #userChangePwWrapper input, #betaWrapper input{*/
+.modal input,
+.modal select{
+	width: 250px;
+	margin: 5px 5px 10px 5px;
+		color: #0034D2;
+		border: 0px;
+		font-weight: 700;
+	    padding: 5px;
+	    outline: none;
+		background-color: rgba(255,255,255,0.6);
+	    box-shadow: 0px 0px 2px rgba(0,0,0,0.4) inset;
+}
+/*#loginWrapper input.modal_btn, #userConfigWrapper input.modal_btn, #userProfileWrapper input.modal_btn, #userChangePwWrapper input.modal_btn, #betaWrapper input.modal_btn{*/
+.modal input.modal_btn{
+	width: 100px;
+	text-align: center;
+	cursor: pointer;
+	background-color: #0034D2;
+	color: white;
+	border: 1px solid white;	
+}
+/*#loginWrapper input.modal_btn:hover, #userConfigWrapper input.modal_btn:hover, #userProfileWrapper input.modal_btn:hover, #userChangePwWrapper input.modal_btn:hover, , #betaWrapper input.modal_btn:hover{*/
+.modal input.modal_btn:hover{
+	background-color: white;
+	color: #0034D2;
+	border: 1px solid #0034D2;
+}
+
+#login, 
+#user_config, 
+#user_profile,
+#user_purchases, 
+#user_change_pw, 
+#beta{
+	padding: 10px;
+	position: absolute;
+	z-index: 1200;
+	top: 35%;
+	left: 50%;
+	margin: -125px 0 0 -160px;
+	background: white;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow:0px 0px 10px rgba(255,255,255,0.8);
+	/*box-shadow:0px 0px 10px rgba(42,73,153,0.8); */
+	display: none;
+}
+#user_purchases{
+	top: 17vh;
+	margin: -125px 0 0 -20vw;
+}
+#advertising{
+	padding: 10px;
+	position: absolute;
+	z-index: 1200;
+	margin: -125px 0 0 -160px;
+	background: white;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow:0px 0px 10px rgba(255,255,255,0.8);
+	/*box-shadow:0px 0px 10px rgba(42,73,153,0.8); */
+	
+	top: 45%;
+	left: 40%;
+	display: block;
+}
+.advertising_txt{
+	font-weight: bold;
+}
+#user_profile{
+	top: 20%;
+}
+#beta{
+	width: 400px;
+	min-height: 200px;
+	height: auto;
+}
+#login{
+	width: 300px;
+	min-height: 175px;
+	height: auto;
+}
+#user_config{
+	width: 300px;
+	min-height: 175px;
+	height: auto;
+}
+#user_profile{
+	width: 300px;
+	min-height: 175px;
+	height: auto;
+}
+#user_purchases{
+	width: 50vw;
+	min-height: 175px;
+	height: auto;
+}
+#user_change_pw{
+	width: 300px;
+	min-height: 175px;
+	height: auto;
+}
+
+#login_form, 
+#login_subscription, 
+#login_reset, 
+#user_config_form, 
+#user_profile_form,
+#user_purchases_form, 
+#user_change_pw_form{
+	margin-top: 35px;
+}
+#login_subscription, 
+#login_reset{
+	display: none;
+}
+
+.loginLinkLeft{
+	float: left;
+}
+.loginLinkRight{
+	float: right;
+}
+.loginLinkLeft, 
+.loginLinkRight{
+	cursor: pointer;
+		color: #0034D2;
+}
+.loginLinkLeft:hover, 
+.loginLinkRight:hover{
+	text-decoration: underline;
+}
+.icoCloseLogin{
+	float: right;
+	width: 25px;
+	max-width: 25px;
+	height: 25px;
+	max-height: 25px;
+	background-image: url("../images/reset.png");
+	content: ' ';
+	margin: 0px 5px -7px 5px;
+	opacity: 1;
+}
+.icoCloseLogin:hover{
+	opacity: 0.8;
+}
+.mandatory{
+	color: #ca2929;
+}
+.modal_error,
+.modal_error p,
+.modal_msg,
+.modal_msg p{
+	width: 90%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+	font-style: italic;
+	color: #ca2929;
+	font-size: 13px;
+	/*border: 1px solid #ffafaf;
+	border-radius: 5px;*/
+}
+.modal_error p, .modal_msg p{
+	margin-top: 2px;
+}
+.modal_msg{
+	color: #0034D2;
+	margin-bottom: 5px;
+}
+
+
+
+
+
+
+/* recaptcha */
+#login_form_captcha, #login_subscription_captcha, #login_reset_captcha{
+	transform: scale(0.86);
+	-webkit-transform: scale(0.86);
+	-ms-transform: scale(0.86);
+	/*transform-origin:0 0;
+	-webkit-transform-origin:0 0;*/
+}
+
+
+/* graph box info */
+
+#graph_box_info, #graph_previ_box_info{
+	position: absolute;
+	background-color: rgba(42,73,153,0.8);
+	box-shadow:0px 0px 4px rgba(0,0,0,0.8);
+	
+	/*width: 230px;
+	height: auto;
+	min-height: 120px;*/
+	
+	width: 13vw;
+	height: auto;
+	min-height: 10vh;
+	
+	display: none;
+	/*font-size: 20px;*/
+	font-size: 1.2vw;
+	
+	
+	color: #fff;
+	z-index: 1100;
+}
+#gbi_hour, #gbi_Previ_hour{
+    /*font-size: 1.5em;*/
+	font-size: 1.2vw;
+}
+#gbi_dir_txt, #gbi_Previ_dir_txt{
+    /*text-transform: uppercase;*/
+}
+.gbi_hour_wrapper, .gbi_Previ_hour_wrapper{
+	width: 100%;
+	text-align: center;
+	min-height: 15px; 
+	padding-top: 5px;
+}
+.gbi_data_wrapper, .gbi_Previ_data_wrapper{
+	padding: 10px;
+	margin: 0 0 5px 0;
+}
+.gbi_Previ_data_sub_title{
+	text-align: center;
+	/*font-size: 18px;*/
+	font-size: 1.0vw;
+	margin-top: 0px;
+	text-transform: none;
+	color: white;
+}
+.gbi_label, .gbi_Previ_label{
+	display: inline-block;
+	/*width: 100px;
+	min-width: 100px;*/
+	width: 4vw;
+	font-size: 0.8vw;
+}
+.gbi_label_de, .gbi_Previ_label_de{
+	width: 7vw;
+}
+.gbi_data{
+	font-size: 0.8vw;
+}
+
+/* my purchases */
+#modal_my_purchase_list_wrapper,
+#modal_my_purchase_details_wrapper{
+	width: 80%;
+	max-height: 20vh;
+	overflow-y: auto;
+	margin: 2vw auto;
+	padding: 1vw;	
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.4);
+}
+#modal_my_purchase_details_wrapper{
+	display: none;
+	max-height: 45vh;
+	overflow-y: auto;
+}
+#modal_my_purchase_list_wrapper h2{
+	margin-bottom: 0.5vw;
+}
+.modal_my_purchase_list_item{
+	background-color: white;
+	cursor: pointer;
+	margin: 3px 0px;
+	padding: 3px;
+	border-radius: 3px;
+}
+.modal_my_purchase_list_item:hover{
+	background-color: #0034d2;
+}
+.modal_my_purchase_list_item:hover p{
+	color: white;
+}
+.modal_my_purchase_details_actions{
+	position: absolute;
+	right: 6vw;
+	cursor: pointer;
+}
+.modal_my_purchase_details_actions div{
+	display: inline;
+	margin-right: 1vw;
+}
+.modal_my_purchase_details{
+	display: block;
+}
+.modal_my_purchase_details_title{
+	color: #555;
+	margin-bottom: 5px;
+	text-align: center;
+}
+.modal_my_purchase_details_table{
+	width: 60%;
+	max-width: 550px;
+	margin: auto;
+	min-height: 26px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+	border-spacing:0;
+    border-collapse:collapse;
+}
+.modal_my_purchase_details_table tr td{
+	padding: 2px;
+	text-align: left;
+	font-size: 1vw;
+}
+.modal_my_purchase_details_table_td_label{
+	width: 45%;
+}
+.modal_my_purchase_details_table tr td.modal_my_purchase_details_table_td_value{
+	text-align: right;
+}
+
+
+
+
+
+.shop_summary_product_table{
+	width: 100%;
+	border-spacing:0;
+    border-collapse:collapse;
+}
+
+.shop_summary_product_table_tr_header{
+	background-color: #f8f8f8;
+}
+.shop_summary_product_table_tr_header > th{ 
+	text-align: left;
+	padding: 5px;
+	color: #444;
+	font-size: 0.9vw;
+}
+.shop_summary_product_table_tr_header > th:last-child{ 
+	text-align: right;
+}
+.shop_summary_product_table_tr > td{
+	text-align: left;
+	padding: 5px;
+	border-bottom: 1px dotted #aaa;
+	font-size: 1vw;
+}
+.shop_summary_product_table_tr > td:last-child{
+	text-align: right;
+}
+.shop_summary_product_offered_to{
+	font-style: italic; 
+	font-size: 0.8vw;
+}

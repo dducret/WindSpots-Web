@@ -1,0 +1,279 @@
+.cssmenu,
+.cssmenu ul,
+.cssmenu ul li,
+.cssmenu ul li span.cssmenu-label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.cssmenu:after,
+.cssmenu > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.cssmenu {
+  width: auto;
+  																/*border-bottom: 1px solid rgba(42,73,153,0.8);*/
+  font-family: Raleway, sans-serif;
+  line-height: 1;
+}
+.cssmenu ul {
+  background: #ffffff;
+}
+.cssmenu > ul > li {
+  float: left;
+																border-bottom: 1px solid rgba(42,73,153,0.8);
+}
+.cssmenu.align-center > ul {
+  font-size: 0;
+  text-align: center;
+}
+.cssmenu.align-center > ul > li {
+  display: inline-block;
+  float: none;
+}
+.cssmenu.align-right > ul > li {
+  float: right;
+}
+.cssmenu.align-right > ul > li > span.cssmenu-label {
+  margin-right: 0;
+  margin-left: -2px;
+}
+.cssmenu > ul > li > span.cssmenu-label {
+  z-index: 2;
+  padding: 4px 8px 2px 6px;
+  font-family: "walkway_expand_boldregular";
+  font-size: 1vw; /* 15px; */
+  font-weight: 400;
+  text-decoration: none;
+  color: #444444;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  margin-right: -2px;
+}
+.cssmenu > ul > li.active > span.cssmenu-label,
+.cssmenu > ul > li:hover > span.cssmenu-label,
+.cssmenu > ul > li > span.cssmenu-label:hover {
+  color: #ffffff;
+}
+.cssmenu > ul > li > span.cssmenu-label:after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 120%;
+  border-top-left-radius: 8px; 
+  border-top-right-radius: 8px;
+  content: "";
+  -webkit-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  -webkit-transform: perspective(5px) rotateX(2deg); 
+  -webkit-transform-origin: bottom;
+  -moz-transform: perspective(5px) rotateX(2deg);
+  -moz-transform-origin: bottom;
+  transform: perspective(5px) rotateX(2deg);
+  transform-origin: bottom;
+}
+.cssmenu > ul > li.active > span.cssmenu-label:after,
+.cssmenu > ul > li:hover > span.cssmenu-label:after,
+.cssmenu > ul > li > span.cssmenu-label:hover:after {
+  background: rgba(0,52,210, 0.9); /* #0034D2; */
+}
+
+
+/* yale */
+/* special top menu (spots/members area) */
+
+.cssmenu > ul > li.cssmenu-spots > span.cssmenu-label, 
+.cssmenu > ul > li.cssmenu-members > span.cssmenu-label{
+	padding: 5px 5px 5px 5px;
+}
+
+.cssmenu > ul > li.cssmenu-spots > span.cssmenu-label > span.cssmenu-spots-img, 
+.cssmenu > ul > li.cssmenu-members > span.cssmenu-label > span.cssmenu-members-img{
+	content: ' ';
+	height:1.4vw;
+	width:1.4vw;
+	margin: -2px 0px -5px 0px;
+	display: inline-block;
+}
+.cssmenu > ul > li.cssmenu-spots > span.cssmenu-label > span.cssmenu-spots-img{
+	background-image: url("../svg/spot-blue.svg");
+}
+.cssmenu > ul > li.cssmenu-members > span.cssmenu-label > span.cssmenu-members-img{
+	background-image: url("../svg/member.svg");
+}
+
+.cssmenu > ul > li.cssmenu-spots.active > span.cssmenu-label > span.cssmenu-spots-img,
+.cssmenu > ul > li.cssmenu-spots:hover > span.cssmenu-label > span.cssmenu-spots-img{
+	background-image: url("../svg/spot.svg");
+}
+.cssmenu > ul > li.cssmenu-members.active > span.cssmenu-label > span.cssmenu-members-img,
+.cssmenu > ul > li.cssmenu-members:hover > span.cssmenu-label > span.cssmenu-members-img{
+	background-image: url("../svg/member-white.svg");
+}
+/* menu language top right */
+.cssmenu_right > ul > li{
+	float: right;
+}
+.menu-tab .cssmenu:after,
+.menu-tab  .cssmenu > ul:after {
+	display: none;
+}
+
+/* auto complete */
+ul.ui-autocomplete{
+	z-index: 1000;	
+}
+
+
+/* top menu login/preferences */
+
+.user-menu-modal{
+	display: none;
+	width: auto;
+	position: fixed;
+	top: 6%;
+	left: 80%; 
+	margin-top: 2px;
+	margin-right: 7px;
+	text-align: left;
+	border: 1px solid #0034D2;
+	background-color: rgba(255,255,255,0.9);
+	box-shadow:0px 0px 5px rgba(0, 52, 210, 0.5);
+	border-radius: 5px;
+	z-index: 1000;
+}
+.user-menu-modal-item{
+	display: block;
+	width: auto;
+	height: auto;
+	padding: 1.5vw;
+	font-size: 1.0vw;
+	/*border-bottom: 1px dotted #0034D2;*/
+	box-shadow:0px 0px 5px rgba(0, 52, 210, 0.5);
+	cursor: pointer;
+	/*z-index: 4;*/
+}
+.user-menu-modal-item:hover{
+	/*background-color: rgba(42,73,153,0.9);*/
+	background-color: rgba(0, 52, 210, 0.9);
+	color: white;
+}
+.user-menu-modal-item span{
+	white-space: nowrap;
+}
+
+/*
+.user-menu-modal-ico{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+	margin-right: 5px;
+}
+
+.user-menu-modal-ico-config{
+	background-image: url("../images/user_menu_config.png");
+}
+*/
+
+
+/* Quick Nav (stations list) */
+.menu-spot-quick-nav{
+	display: none;
+	position: absolute;
+	z-index: 1100;
+	width: 19vw;
+	max-height: 25vw;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-left: 1px solid rgba(0, 52, 210, 1);
+	border-right: 1px solid rgba(0, 52, 210, 1);
+	border-bottom: 1px solid rgba(0, 52, 210, 1);
+}
+.menu-spot-quick-nav-item{
+	width: 100%;
+	font-size: 1vw;
+	color: rgba(0, 52, 210, 1);
+	background-color: #fff;
+	padding: 0.15vw;
+	cursor: pointer;
+}
+.menu-spot-quick-nav-item:hover{
+	background-color: rgba(0, 52, 210, 0.9);
+	color: white;
+}
+
+/* top menu VIP */
+.menu-vip .menu-spot{
+	vertical-align: bottom;
+}
+.navVip{
+	display: inline-block;
+	background-color: #fff;
+	border: 1px solid #0034d2;
+	color: #2a4999;
+	width: 10vw;
+	height: 1vw;
+	padding: 0.5vw 1vw;
+	margin: 0 0.7vw;
+	line-height: 1vw;
+	cursor: pointer;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+	text-align: center;
+	
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.navVip:hover,
+.navVipActive{
+	
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-ms-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+	
+	/*
+	-webkit-transition: background-color 200ms linear;
+	-moz-transition: background-color 200ms linear;
+	-o-transition: background-color 200ms linear;
+	-ms-transition: background-color 200ms linear;
+	transition: background-color 200ms linear;
+	*/
+	
+	color: #fff;
+	background-color: #0034d2;
+	//box-shadow: 0px 0px 10px rgba(42,73,153,1);
+	box-shadow: 0px 0px 10px rgba(0,52,210,1);
+	
+}
+.navVip span{
+	font-size: 1vw;
+}
+.navVipDisabled,
+.navVipDisabled:hover,
+.navVipDisabled:active{
+	background-color: #c7c7c7;
+	box-shadow: none;
+	border: #999;
+	color: #fff;
+}

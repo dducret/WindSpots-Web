@@ -1,0 +1,325 @@
+
+/* VIP - wrapper */
+.main-content-vip-container{
+	/*background-color: rgba(255,255,255,0.4);
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.3);*/
+	text-align: center;
+	/*margin: 6px;*/
+}
+.contentVip{
+	/*padding: 5px;*/
+}
+
+
+
+
+
+
+/* VIP - steps checkout common */
+.shopCheckoutError{
+	//min-height: 2vw;
+}
+
+.checkoutValidationImg{
+	//float: right;
+	width: 4vw;
+	max-width: 24px;
+	height: auto; 	
+	margin: -5px 5px 0 5px;
+	display: none;
+}
+
+.checkoutSteps{
+	border: 1px solid rgba(0, 52, 210, 0.3);	/* #BAC5DA #a6c9e2 #f8fdff*/
+	/*padding: 0px 0.5vw 0.5vw;*/ 
+	margin-bottom: 1px;
+	background: url(../images/bg_step1_shop.png);
+	background-position: top left;
+	background-repeat: repeat-y;
+	background-size: 1vw 100%;
+}
+.checkoutAddressWrapper{ 
+	background: url(../images/bg_step2_shop.png);
+	background-position: top left;
+	background-repeat: repeat-y;
+	background-size: 1vw 100%;
+}
+.checkoutPaymentWrapper{ 
+	background: url(../images/bg_step3_shop.png);
+	background-position: top left;
+	background-repeat: repeat-y;
+	background-size: 1vw 100%;
+}
+.checkoutSummaryWrapper{ 
+	background: url(../images/bg_step4_shop.png);
+	background-position: top left;
+	background-repeat: repeat-y;
+	background-size: 1vw 100%;
+}
+
+
+.checkoutSteps p,
+.checkoutSteps a,
+.checkoutSteps label,
+.checkoutSteps span,
+.checkoutSteps input,
+.checkoutSteps select{
+	font-size: 0.9vw;
+}
+.checkoutSteps label{
+	color: #666666;	
+}
+
+/*
+.checkoutSteps1Left,
+.checkoutSteps2Left,
+.checkoutSteps3Left,
+.checkoutSteps4Left{
+	float:left; 
+	width: 1vw; 
+	height: 3.25vw; 
+	margin-top: 0vw;
+}
+.checkoutSteps1Left{ background-color: rgba(0, 52, 210, 0.2); }
+.checkoutSteps2Left{ background-color: rgba(0, 52, 210, 0.4); }
+.checkoutSteps3Left{ background-color: rgba(0, 52, 210, 0.6); }
+.checkoutSteps4Left{ background-color: rgba(0, 52, 210, 0.8); }
+*/
+
+.checkoutSteps h2{
+	/*border-bottom: 1px solid rgba(0, 52, 210, 0.3);*/
+	/*border-bottom: 1px solid #efefef;*/
+}
+.checkoutTitle{
+	font-family: "walkway_expand_boldregular";
+	/*font-size: 20px;*/
+    padding: 1vw 0;
+    /*padding: 0.5vw 0;*/
+	cursor: pointer;	
+}
+.checkoutSubWrapper{
+	display: none;
+	text-align: center;
+	margin-top: 1vw;
+}
+.checkoutProductSubWrapper{
+	display: block;
+}
+.checkoutSubWrapper input {
+    margin-left: 0px;
+    width: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+	background-color: none;
+    box-shadow: none;	
+	/*font-size: 1vw;*/
+}
+input.checkoutInput{
+	width: 15vw;
+	min-width: 15vw;
+}
+select.checkoutSelect{
+	width: 16vw;
+	min-width: 16vw;
+}
+input.checkoutInput, 
+select.checkoutSelect{
+    border: 0px;
+    color: #0034d2;
+    /*font-weight: 700;*/
+    padding: 0.5vw;
+    outline: none;
+    background-color: rgba(255,255,255,0.6);
+    box-shadow: 0px 0px 0.2vw rgba(0,0,0,0.4) inset;
+	border: 1px solid white;
+}
+input.checkoutInput:hover, 
+select.checkoutSelect:hover,
+input.checkoutInput:focus, 
+select.checkoutSelect:focus{
+	border: 1px solid #0034d2;
+}
+
+/* move to vip general -> see -> input.modal_btn
+/*.checkoutSteps input.modal_btn{
+	width: 10vw;
+	text-align: center;
+	cursor: pointer;
+	background-color: #0034d2;
+	color: white;
+	border: 1px solid white;	
+	padding: 0.3vw;
+	margin: 1vw 0px;
+}
+
+.checkoutSteps input.modal_btn:hover{
+	background-color: white;
+	color: #0034d2;
+	border: 1px solid #0034d2;
+}
+*/
+
+
+
+/* VIP - checkout - step 1 - product */
+
+.checkoutProductSubWrapper table.checkoutTable{
+	width: 40vw; /*520px;*/
+	margin: auto;
+}
+.checkoutProductSubWrapper table td{
+	vertical-align: top;
+	text-align: left;
+}
+
+.checkoutProductSubWrapper td img{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	
+}
+.checkoutProductTitle{
+	/*font-family: "walkway_expand_semiboldRg";*/
+    padding-bottom: 0.5vw;
+	margin: 0px;
+	font-weight: bold;
+}
+
+
+/* VIP - checkout - step 1 - don */
+.checkoutProductSubWrapper table.productDonTable{
+	width: 50vw;
+	margin: auto;
+}
+.checkoutProductSubWrapper table.productDonTable td{
+	vertical-align: top;
+	text-align: center;
+}
+.checkoutProductSubWrapper table.productDonTableDetails{
+	width: 12vw;
+	margin: auto;
+}
+.checkoutProductSubWrapper table.productDonTableDetails td{
+	vertical-align: top;
+	text-align: center;
+}
+
+
+/* VIP - checkout - step 1 - sponsor */
+
+.checkoutSponsorSubWrapper{
+	display: block;
+}
+
+.checkoutSponsorAmount{
+	width: 20vw;
+	/*height: 55px;*/
+	border: 1px solid rgba(0, 52, 210, 0.3);	/*#0034d2;*/
+	padding: 2vw;	
+	margin: 0.5vw 2vw 0 2vw;
+	text-align: center;
+	box-shadow: 0.5vw 0.5vw 0.6vw 0.2vw rgba(0,0,0,.3);
+}
+
+.checkoutSponsorCurrency p{
+	text-align: left;
+	line-height: 200%;
+	padding-bottom: 0.5vw;
+}
+
+span.checkoutSponsorCurrencyAmount{
+	font-size: 3vw;
+	color: rgba(0, 52, 210, 0.3);	/*#0034d2;*/
+}
+input.checkoutSponsorCurrencyInput{
+	margin: 0px 1vw 0px 1vw;
+	padding: 0.3vw;
+	width: 7vw;
+	height: 2.5vw;
+	font-size: 3vw;
+	color: rgba(0, 52, 210, 0.3);	/*#8ed2ff;*/
+	border: 1px solid rgba(0, 52, 210, 0.3);	/*#0034d2;*/
+}
+.checkoutSponsorType p{
+	text-align: left;
+	line-height: 200%;
+	padding-bottom: 0.5vw;
+}
+.checkoutSponsorsPseudo{
+	/*padding-top: 20px;*/
+	margin-top: 2vw;
+	/*margin-left: 170px;*/
+	line-height: 150%;
+}
+.checkoutSponsorsPseudo table{
+	margin: auto;
+}
+
+
+
+
+
+/* VIP - checkout - step 2 - billing address */
+.checkoutAddressSubWrapper table{
+	width: 25vw;
+	margin: auto;
+}
+.checkoutAddressSubWrapper table td{
+	vertical-align: top;
+	text-align: left;
+}
+
+.checkoutAddressInfo{
+	width: 32vw;
+	margin: 2vw auto auto auto;
+}
+
+
+
+
+/* VIP - checkout - step 3 - payment */
+
+.checkoutPaymentSubWrapper table{
+	width: 60vw;
+	margin: auto;
+	/*margin-bottom: 15px;*/
+}
+.checkoutPaymentSubWrapper table td{
+	vertical-align: top;
+	text-align: left;
+}
+.checkoutPaymentInfo{
+	width: 32vw;
+	margin: 1vw auto;
+}
+
+
+
+
+/* VIP - checkout - step 4 - summary */
+.checkoutSummarySubWrapper table{
+	width: 50vw;
+	margin: auto;
+	border: 1px solid #ccc;
+	margin-bottom: 1vw;
+}
+.checkoutSummarySubWrapper table td{
+	padding: 0.5vw;
+	vertical-align: top;
+	text-align: left;
+	font-size: 0.9vw;
+	color: #666666;
+}
+.checkoutSummaryTitle{
+	color: #555;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+
+/* VIP - Confirmation SHOP views (error cases or confiramtion) */
+.shop_view_confirmation_wrapper{
+	padding: 5vw 0;
+	width: 70vw;
+	margin: 0 auto;
+	text-align: left;
+}
