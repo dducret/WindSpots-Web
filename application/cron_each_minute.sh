@@ -49,4 +49,5 @@ echo $$ > $PID_FILE
 # sleep 14 seconds to get data received from stations
 sleep 14
 sudo -u www-data /usr/bin/php /data/sites/www/application/process-average.php >>/data/sites/www/log/process-average.log &
+sudo -u www-data /usr/bin/php /data/sites/api/application/generate-arrays.php >>/data/sites/api/log/generate-arrays.log &
 exit 0
