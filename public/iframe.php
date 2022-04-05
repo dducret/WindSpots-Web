@@ -1,4 +1,6 @@
 <?php
+// To display the iframe of a station
+// https://windspots.org/iframe.php?station=CHGE04&unit=kmh&language=en_GB&graph=ltr&forecast=ltr&maps=true
 //Constant is used in included files to prevent direct access.
 const _WEXEC = 1;
 //add files
@@ -6,49 +8,47 @@ require_once './includes/config.php';
 require_once './includes/helper.php';
 require_once './includes/controller.php';
 require_once "./includes/content.php";
-//force reload script
+// default
+$currentStationName = 'CHGE04';
+$lang  = WindspotsHelper::getBrowserLanguage(); // en_GB fr_FR de_DE
+$unit  = 'kts';   // kts kmh bft
+$graph = 'ltr';   //  ltr rtl
+$forecast = 'ltr';//  ltr rtl
+$map = 'false'; // true false
+// station
+if (isset($_REQUEST['station'])) {
+  $currentStationName = $_REQUEST['station'];
+}
+// unit
+if (isset($_REQUEST['unit'])) {
+  $unit = "_".$_REQUEST['unit'];
+}
+// language
+if (isset($_REQUEST['language'])) {
+  $lang = $_REQUEST['language'];
+}
+WindspotsHelper::loadTranslationFile( $lang );
+// graph
+if (isset($_REQUEST['graph'])) {
+  $graph = $_REQUEST['graph'];
+}
+// forecast
+if (isset($_REQUEST['forecast'])) {
+  $forecast = $_REQUEST['forecast'];
+}
+// forecast
+if (isset($_REQUEST['map'])) {
+  $map = $_REQUEST['map'];
+}
+// for helper
+@session_start();
+$_SESSION['W_GRAPH_LTR'] = $graph;
+$_SESSION['W_GRAPH_PREV_LTR'] = $forecast;
+$_SESSION['W_UNIT'] = $unit;
+$_SESSION['W_LANG'] = $lang;
 //$r = time();
 $r = 27072018;
-//get current station name (session)
-$currentStationName = '';
-ini_set("session.gc_maxlifetime", _WINDSPOTS_SESSION_LIFETIME);
-ini_set('session.cookie_lifetime', _WINDSPOTS_SESSION_LIFETIME);
-//ini_set("session.use_only_cookies", '1');
-//session
-if(session_status() !== PHP_SESSION_ACTIVE) {
-  session_set_cookie_params( _WINDSPOTS_SESSION_LIFETIME );
-}
-@session_start(); // @ at the beginning to suppress the PHP notice - As stated in the manual for session_start(), a second call will do no harm,it will be simply ignored.
-// logIt("index _SESSION['W_LANG']: ".$_SESSION['W_LANG']);
-if (isset($_SESSION['W_UNIT']) && !empty($_SESSION['W_UNIT'])) {
-  // logIt("index _SESSION['W_UNIT']: " . $_SESSION['W_UNIT']);
-}
-//by default fix method to received request data
-$dataReceived = $_POST;
-// logIt('index - Post: '.json_encode($_POST));
-//except for case below
-$getTaskAllowed = array( 'confirm', 'content', 'language', 'saveConfig' );
-if( isset($_REQUEST['task']) && in_array( $_REQUEST['task'], $getTaskAllowed ) ){
-    $dataReceived = $_REQUEST;
-}
-//auto load content (js -> in new tab)
-$autoLoadContentJs = '';
-//process task recieved (controller)
-WindspotsController::taskManager( $dataReceived );
-//load translation (not logged)
-if( !isset($_SESSION['W_LANG']) || empty($_SESSION['W_LANG']) ){
-    $lang = WindspotsHelper::getBrowserLanguage();
-    WindspotsHelper::loadTranslationFile( $lang );
-    $_SESSION['W_LANG'] = $lang;
-}else{
-    $lang = $_SESSION['W_LANG'];
-    WindspotsHelper::loadTranslationFile( $lang );
-}
-//get stations data
-$stations = WindspotsHelper::getStations( array('station_name', 'display_name', 'latitude', 'longitude', 'image_time', 'data_time'), true);
-//store stations in session to use with access again to the db
-$_SESSION['WSTATIONS'] = $stations;
-//language 
+//language
 $langShort = '';
 $clsMenuLanguageFR = '';
 $clsMenuLanguageEN = '';
@@ -71,73 +71,6 @@ switch( $lang ){
 //server GMT 0 -> set Geneva time
 date_default_timezone_set('Europe/Zurich');
 $now = strtotime( date("Y-m-d H:i:s") );
-//prepare data (based on stations data)
-$mapGlobalMarkers = '';
-$searchAutoComplete = '';
-$stationStatus = array();
-$mapMarkersByStation = array();
-$tmpStationName = array();
-$stationsNavJS = array();
-$stationsListQuickNav = '';
-if( is_array($stations) && count($stations) > 0 ){
-  $nbStation = count($stations);
-  $markerId = 1;
-  foreach($stations as $key => $station){
-    //quick station nav JS -> prepare stations array
-    $stationsNavJS[] = $station['station_name'];
-    //check station up (map marker -> if no data until 5min -> change ico disable)
-    $stationLastDataUpdate = strtotime( $station['data_time'] );
-    // $stationLastImgUpdate = strtotime( $station['image_time'] );
-    //if( ( ($now - $stationLastDataUpdate) <= 300 ) && ( ($now - $stationLastImgUpdate) <= 300 ) ){
-    if( ($now - $stationLastDataUpdate) <= 300 ){
-        $stationStatus[$station['station_name']] = true;
-    }else{
-        $stationStatus[$station['station_name']] = false;
-    }
-    //map markers
-    $markerStation = '';
-    if( isset($station['station_name']) && !empty($station['station_name'])
-      && isset($station['display_name']) && !empty($station['display_name'])
-      && isset($station['latitude']) && !empty($station['latitude'])
-      && isset($station['longitude']) && !empty($station['longitude'])
-      ){
-        $icoMarker = 'spotIcon';
-        if( $stationStatus[$station['station_name']] == false ){
-            $icoMarker = 'spotDisabledIcon';
-        }
-        //$markerStation .= 'var marker = L.marker(['.$station['latitude'].', '.$station['longitude'].'], {icon: '.$icoMarker.', stationName: \''.$station['station_name'].'\', title: "'.utf8_encode($station['display_name']).'"}); ';  //myCustomId: 5454,
-        $markerStation .= 'var marker = L.marker(['.$station['latitude'].', '.$station['longitude'].'], {icon: '.$icoMarker.', stationName: \''.$station['station_name'].'\', title: "'.$station['display_name'].'"}); ';  //myCustomId: 5454,
-        $markerStation .= 'marker.on(\'click\', onMarkerClick); ';
-        $markerStation .= 'marker.addTo(mapGlobal); '; //map
-        $markerStation .= 'var marker = null; ';
-        $mapGlobalMarkers .= $markerStation;
-        $mapMarkersByStation[$station['station_name']] = $markerStation;
-    }
-    //search auto complete
-    //$searchAutoComplete .= '{label:"'.WindspotsHelper::convertStr($station['display_name']).'",value:"'.$station['station_name'].'"}';
-    $searchAutoComplete .= '{label:"'.$station['display_name'].'",value:"'.$station['station_name'].'"}';
-    if($key < ($nbStation - 1) ){
-        $searchAutoComplete .= ',';
-    }
-    //select list station (quick nav)
-    //$stationsListQuickNav .= '<div class="menu-spot-quick-nav-item" onclick="actionQuickNav( \''.$station['station_name'].'\' );">'.WindspotsHelper::convertStr($station['display_name']).'</div>';
-    $stationsListQuickNav .= '<div class="menu-spot-quick-nav-item" onclick="actionQuickNav( \''.$station['station_name'].'\' );">'.$station['display_name'].'</div>';
-  }
-  if( is_array($stationsNavJS) && count($stationsNavJS) > 0 ){
-      $stationsNavJS = implode("','", $stationsNavJS);
-      $stationsNavJS = "var stationsNav = ['".$stationsNavJS."'];";
-  }else{
-      //reset if no data to avoid js error
-      $stationsNavJS = [''];
-    }
-}
-if( !empty($stationsListQuickNav) ){
-    $stationsListQuickNav = '<div class="menu-spot-quick-nav" style="display: none;">'.$stationsListQuickNav.'</div>';
-}
-$_SESSION['WSTATIONS_MAP_MARKERS_BY_STATION'] = $mapMarkersByStation;
-$_SESSION['WSTATIONS_STATUS'] = $stationStatus;
-$_SESSION['WSTATIONS_STATUS_LAST_UPDATE'] = time();
-//var_dump(date('Y-m-d H:i:s', $_SESSION['WSTATIONS_STATUS_LAST_UPDATE']));
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $langShort; ?>">
@@ -157,23 +90,6 @@ $_SESSION['WSTATIONS_STATUS_LAST_UPDATE'] = time();
   <script src="js/leaflet.js<?php echo '?r='.$r; ?>"></script>
 </head>
 <body>
-  <div class="info_cookie">
-    <?php 
-    if( $langShort == 'fr' ){
-        echo "<p>En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies créés par nous-mêmes afin de gérer vos préférences, comme décrit dans nos <span class=\"cookies_link\" onclick=\"loadContent( '', 'terms', 'Conditions d\'utilisation' );\">conditions d'utilisation</span> et <span class=\"cookies_link\" onclick=\"loadContent( '', 'data', 'Protection des données' );\">Protection des données</span>.<br />Si vous <a href=\"#\" onclick=\"acceptCookie();\">acceptez</a> notre utilisation des cookies, veuillez continuer à utiliser notre site.</p>";
-    }else{
-        echo "<p>By continuing your visit to this site, you accept the use of cookies created by us or by third parties to Forecastde statistics on the use of the site, as described in our <span class=\"cookies_link\" onclick=\"loadContent( '', 'terms', 'Terms of use' );\">Terms of uses</span> and <span class=\"cookies_link\" onclick=\"loadContent( '', 'data', 'Data protection' );\">Data protection</span>.<br />If you <a href=\"#\" onclick=\"acceptCookie();\">agree</a> to our use of cookies, please continue to use our site.</p>";
-    }
-    ?>
-  </div>
-  <div id="userConfigWrapper" class="modal" onclick="hideModal( 'userConfigWrapper', 'user_config', true );">
-    <div id="user_config">
-      <span class="icoCloseLogin pointer" onclick="hideModal( 'userConfigWrapper', 'user_config', false );"></span>
-      <div id="user_config_form">
-        <?php echo WindspotsHelper::generateModalConfigContent(); ?>
-      </div>
-    </div>
-  </div>
   <?php //-- modal graph strucure -- ?>
   <?php //grap box info ?>
   <div id="graph_box_info">
@@ -198,96 +114,10 @@ $_SESSION['WSTATIONS_STATUS_LAST_UPDATE'] = time();
     </div>
   </div>
   <?php //Quick Nav structure (stations list) ?>
-  <?php echo $stationsListQuickNav; ?>
   <?php //-- website structure --?>
-  <div id="myHeader" class="header-fixed">
-    <div class="top-menu">
-      <div class="logo" onclick="openUrl( '<?php echo _WINDSPOTS_URL; ?>' );">
-        <img id="logo" alt="logo" src="svg/windspots.svg" style="height: 10vw; width:100%"/>
-      </div>
-      <div class="spot-nav-container">
-        <div class="spot-nav">
-          <div class="menu-spot-container menu-windspots">
-            <div class="menu-spot" >
-              <div style="display: inline-block; text-align: center; width:100%;">
-                <div class="cellIco" onclick="quickStationNav( -1 );" style="display: inline-block; width: 2vw;">
-                  <img src="svg/prev.svg" alt="prev" style="height: 1.2vw; width:100%"/>
-                </div>
-                <div class="cellIco" style="display: inline-block; width: 12vw; text-align: center; vertical-align: bottom;">
-                  <div id="st_menu_name" style="height: 1.2vw; width: 100%; cursor: pointer;" onclick="displayQuickNav( false );">
-                    <h4 style="padding-top: 0.6vw;">&nbsp;</h4>
-                  </div>  
-                </div>
-                <div class="cellIco" onclick="quickStationNav( 1 );" style="display: inline-block; width: 2vw;">
-                  <img src="svg/next.svg" alt="next" style="height: 1.2vw; width: 100%"/>
-                </div>
-              </div>
-            </div>
-            <div class="menu-spot" >
-              <input id="st_search" style="font-family: 'droid',serif; color: rgba(42,73,153,1); font-size: 1vw; margin: 0;" value="<?php echo WindspotsHelper::lang('SEARCH_A_SPOT'); ?>">&nbsp;
-            </div>
-            <div class="menu-spot" >
-              <img src="svg/search.svg" alt="search" style="height: 1.4vw; width: 1.4vw;" onclick="$('#st_search').focus();"/>
-            </div>
-            <?php //spacer ?>
-            <div class="menu-spot" style="width: 1.6vw;">
-              &nbsp;
-            </div>
-            <div class="menu-spot">
-              <img src="svg/world.svg" alt="world" style="height:6vw; " onclick="loadMainContent('map_global');"/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="user-menu-container">
-        <div class="user-menu">
-          <div style="display: table; width: 100%;">
-            <div class="logo" style="padding: 0 2%; vertical-align: middle; width: 2vw;" >
-            </div>
-            <div class="menu-tab" style="position: relative; top: 2%;">
-              <div class="cssmenu cssmenu_right">
-                <ul>
-                  <li class="<?php echo $clsMenuLanguageDE; ?>"><span class="cssmenu-label" onclick="switchLanguage('de_DE');">DE</span></li>
-                  <li class="<?php echo $clsMenuLanguageEN; ?>"><span class="cssmenu-label" onclick="switchLanguage('en_GB');">EN</span></li>
-                  <li class="<?php echo $clsMenuLanguageFR; ?>"><span class="cssmenu-label" onclick="switchLanguage('fr_FR');">FR</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="display: table; width: 100%;">
-          <div class="menu-tab" style="position: relative; top: 2%;">
-            <img src="svg/parameter.svg" alt=Parameter" class="user-menu-ico" id="user-menu-ico-login" style="width: 2.5vw; margin-left: 3vw;" onclick="showModal( 'userConfigWrapper', 'user_config', 'config');"/>
-          </div>
-        </div>
-      </div>
-    
-    </div>
-  </div>
-
-  <div id="confirmation-msg"></div>
   <!-- <div id="error-msg"></div> -->
   <div id="myBody" class="body-scrollable">
-    <div class="main-content main-content-vip-container"></div>
-    <div class="main-content main-content-mapglobal-container">
-      <div id="mapGlobal" style="display: block; width: 100%; height: 90vh;"></div>
-    </div>
-    <?php
-    //preload content to limit ajax request --> just get content and show/hide elements
-    //WindSpots
-    //about
-    echo WindspotsContent::generateWindspotsAbout();
-    //contact
-    echo WindspotsContent::generateWindspotsContact();
-    //faq
-    echo WindspotsContent::generateWindspotsFaq();
-    //terms and conditions
-    echo WindspotsContent::generateWindspotsTerms();
-    //data protection
-    echo WindspotsContent::generateWindspotsDataProtection();    
-    //credits
-    echo WindspotsContent::generateWindspotsCredits();
-    ?>
+
     <div class="main-content main-content-article-container"></div>
     <div class="main-content main-content-spot-container">
       <div class="spot-image">
@@ -525,14 +355,6 @@ $_SESSION['WSTATIONS_STATUS_LAST_UPDATE'] = time();
       </div>
     </div>
     <div class="bottom-menu">
-      <div class="bottom-menu-windspots" style="text-align: center;">
-        <div onclick="loadContent( '', 'about', '<?php echo WindspotsHelper::lang('FOOTER_ABOUT'); ?>' );"><h3><?php echo WindspotsHelper::lang('FOOTER_ABOUT'); ?></h3></div>
-        <div onclick="loadContent( '', 'contact', '<?php echo WindspotsHelper::lang('FOOTER_CONTACT'); ?>' );"><h3><?php echo WindspotsHelper::lang('FOOTER_CONTACT'); ?></h3></div>
-        <div onclick="loadContent( '', 'faq', '<?php echo WindspotsHelper::lang('FOOTER_FAQ'); ?>' );"><h3><?php echo WindspotsHelper::lang('FOOTER_FAQ'); ?></h3></div>
-        <div onclick="loadContent( '', 'terms', '<?php echo str_replace("'", "\'", WindspotsHelper::lang('FOOTER_TERMS_OF_USE') ); ?>' );"><h3><?php echo WindspotsHelper::lang('FOOTER_TERMS_OF_USE'); ?></h3></div>
-        <div onclick="loadContent( '', 'data', '<?php echo WindspotsHelper::lang('FOOTER_DATA_PROTECTION'); ?>' );"><h3><?php echo WindspotsHelper::lang('FOOTER_DATA_PROTECTION'); ?></h3></div>
-        <div onclick="loadContent( '', 'credits', '<?php echo WindspotsHelper::lang('FOOTER_CREDITS'); ?>' );"><h3><?php echo WindspotsHelper::lang('FOOTER_CREDITS'); ?></h3></div>
-      </div>
       <div class="text-transparent">
         <?php echo WindspotsHelper::lang('VERSION').' '._WVERSION_NUMBER.' &copy '.WindspotsHelper::lang('WINDSPOTS_SARL').' 2004 - '.date('Y'); ?>
       </div>
@@ -541,40 +363,12 @@ $_SESSION['WSTATIONS_STATUS_LAST_UPDATE'] = time();
 </body>
   <script>
   <?php
-  // echo '// Cookies: '.$_COOKIE['W_UNIT']." - ".$_COOKIE['W_GRAPH_LTR']." - ".$_COOKIE['W_GRAPH_PREV_LTR']." - ".$_COOKIE['W_LANG']."\r\n";
-  // echo '  // Session: '.$_SESSION['W_STATION'].' - '.$_SESSION['W_UNIT']." - ".$_SESSION['W_GRAPH_LTR']." - ".$_SESSION['W_GRAPH_PREV_LTR']." - ".$_SESSION['W_LANG']."\r\n";
-  // echo '  // Current: '.$_SESSION['WCURRENT_STATION'].' - '.$currentStationName."\r\n";
   //init javascript var
-  if( !empty($currentStationName) ){
-    echo "  var currentStationName = '".$currentStationName."';\r\n";
-    echo "  var refresh = true;\r\n";
-  } else {
-    if( isset($_SESSION['W_STATION']) && $_SESSION['W_STATION'] ) {
-      $currentStationName = $_SESSION['W_STATION'];
-      echo "  var currentStationName = '".$_SESSION['W_STATION']."';\r\n";
-      echo "  var refresh = true;\r\n";
-    } else {
-      echo "  var currentStationName = null;\r\n";
-      echo "  var refresh = false;\r\n";
-    }
-  }
-  if( isset($_SESSION['W_UNIT']) && $_SESSION['W_UNIT'] ){
-    echo "  var windUnitSess = '".$_SESSION['W_UNIT']."';\r\n";
-  } else {
-    echo "  var windUnitSess = '_kts';\r\n";
-    $_SESSION['W_UNIT'] = '_kts';
-  }
-  echo "  ".$stationsNavJS."\r\n";
-  if( isset($_SESSION['W_GRAPH_LTR']) && $_SESSION['W_GRAPH_LTR'] ){
-    echo "  var graphDirection = '".$_SESSION['W_GRAPH_LTR']."';\r\n";
-  } else {
-    echo "  var graphDirection = 'ltr';"."\r\n";
-  }
-  if( isset($_SESSION['W_GRAPH_PREV_LTR']) && $_SESSION['W_GRAPH_PREV_LTR'] ){
-    echo "  var graphForecastDirection = '".$_SESSION['W_GRAPH_PREV_LTR']."';\r\n";
-  } else {
-    echo "  var graphForecastDirection = 'ltr';\r\n";
-  }
+  echo "  var currentStationName = '".$currentStationName."';\r\n";
+  echo "  var refresh = true;\r\n";
+  echo "  var windUnitSess = '".$unit."';\r\n";
+  echo "  var graphDirection = '".$graph."';\r\n";
+  echo "  var graphForecastDirection = '".$forecast."';\r\n";
   echo "  var hourLabelNow = '".WindspotsHelper::lang('Maintenant')."';\r\n";
   ?>
   // Use for graph (real/forcasted)
@@ -733,6 +527,11 @@ $_SESSION['WSTATIONS_STATUS_LAST_UPDATE'] = time();
       boxInfoForecast.style.display = "none";
       boxInfoForecast = null;
   }
+  function hideMap(){
+    boxMap = document.getElementById('map');
+    boxMap.style.display = "none";
+    boxMap = null;
+  }
   var onMarkerClick = function(e){
       //console.log(this);
       //alert("You clicked on marker with customId: " +this.options.myCustomId);
@@ -750,141 +549,20 @@ $_SESSION['WSTATIONS_STATUS_LAST_UPDATE'] = time();
       iconUrl: 'images/ico-spot-active.png',
       iconSize:     [28, 40]
   });
-  function initMapGlobal(){
-    //Leafletjs 
-    mapGlobal = L.map('mapGlobal').setView([45.906741, 6.1528432], 6);
-    checkInitMapGlobal = true;
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(mapGlobal);
-    <?php
-    echo $mapGlobalMarkers;
-    ?>
-  }
-  function redirectHome(){
-    openUrl( "<?php echo _WINDSPOTS_URL; ?>" );
-  }
-  function switchLanguageCallBack( response ){
-    // alert(response);
-    redirectHome();
-  }
-  function switchLanguage( lang ){
-    if( lang === 'fr_FR' || lang === 'en_GB' || lang === 'de_DE' ){
-      $.post( "index.php", { "task":"language", "lang": lang }, switchLanguageCallBack );
-    }
-  }
-  //without anonymous function and no reload
-  var resizeBodyTimer = null
-  function calculateHeaderBodyHeight(){
-    clientHeight = document.getElementById('myHeader').clientHeight;
-    d = document.getElementById('myBody');
-    d.style.top = clientHeight+'px';
-    clientHeight = null;
-    d = null;
-  } 
-  function resizeBodyTimeout(){  
-    calculateHeaderBodyHeight();      
+  function resizeBodyTimeout(){
     resizeBodyTimer = null;
     loadGraph( currentGraphType );
-    userMenuAutoClose();
-    autoCloseQuickNav();
-  }
-  function resizeBody() { 
-    resizeBodyTimer = setTimeout(resizeBodyTimeout,200); 
-  }
-  window.addEventListener('resize', resizeBody);
-  function loadContentInNewTab( type, content, title ){
-    var win = window.open( '<?php echo _WINDSPOTS_URL; ?>?task=content&ty='+type+'&co='+content+'&ti='+title, '_blank');
-    win.focus();
-  }
-  function checkAcceptCookie(){
-    var check = false;
-    var name = "acceptCookie=";
-      var ca = document.cookie.split(';');
-      for(var i = 0; i < ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0) === ' ') {
-              c = c.substring(1);
-          }
-          if (c.indexOf(name) === 0) {
-            check = c.substring(name.length, c.length);
-          }
-      }
-    toggleAcceptCookie( check );
-  }
-  function toggleAcceptCookie( check ){
-    if( check !== false ){
-      jQuery('.info_cookie').hide();
-    }else{
-      jQuery('.info_cookie').show();
-    }
-  }
-  function setAcceptCookie(c_name,value,expiredays){
-    var exdate=new Date();
-    exdate.setDate(exdate.getDate()+expiredays);
-    document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString())+"; path=/";
-    checkAcceptCookie();
-  }
-  function acceptCookie(){
-    setAcceptCookie('acceptCookie','yes',365);
-  }
-  function resetModalContentCallBack( response ){
-    if( response.wrapper_id === '' ){
-      cleanModalsContent();
-    }else{        
-      $('#'+response.wrapper_id).html( response.modal_content );
-    }
-  }
-  function resetModalContent( type ){
-    $.post( "index.php", { "task":"generateModalContent", type:type }, resetModalContentCallBack, "json" );
-  }
-  function saveConfigCallBack( response ){
-    // alert(response);
-  }
-  function userMenu( task, subTask ){
-    switch(task){
-      case 'config':        
-        checkTask = true;
-        if( subTask === 'save' ){
-          cleanMsgAndError();
-          prefWindUnit = $('#pref_wind_unit').val();
-          prefFavoriteStation = $('#pref_fav_station').val();
-          prefGraphDirection = $('#pref_graph_direction').val();
-          prefGraphForecastDirection = $('#pref_graph_previ_direction').val();
-          prefLanguage = $('#pref_user_language').val();
-          $.post( "index.php", { "task":"saveConfig", pref_wind_unit:prefWindUnit, pref_favorite_station:prefFavoriteStation, pref_graph_direction:prefGraphDirection, pref_graph_previ_direction:prefGraphForecastDirection, pref_language:prefLanguage }, saveConfigCallBack, "json" );
-          hideModal( 'userConfigWrapper', 'user_config', false );
-          redirectHome();
-        }
-        if( subTask === 'cancel' ){
-          hideModal( 'userConfigWrapper', 'user_config', false );
-          resetModalContent( 'config' );
-        }
-      break;
-    default:
-      break;    
-    }
   }
   function layoutReady(){
-    resizeBodyTimeout();
-    <?php     
-    if( !empty($currentStationName) &&  $currentStationName != '1111' ){
-      //load station
-      //echo "loadStation( '".$currentStationName."', 1 );";
-      echo "loadMainContent( 'spot' );";
-    }else{
-      //no station found (published and public)
-      echo "loadMainContent( 'map_global' );";
-    }
+    <?php
+    echo "loadMainContent( 'spot' );";
+    if($map === "false")
+      echo "hideMap();";
     ?>
     keywordInput = $('#st_search');
     keywordDefaultValue = keywordInput.val();
-    keywordInput.focus( focusSearch ).blur( blurSearch ); 
-    var availableTags = [
-      <?php 
-          echo $searchAutoComplete;
-      ?>
-    ];
+    keywordInput.focus( focusSearch ).blur( blurSearch );
+    var availableTags = [];
     $( "#st_search" ).autocomplete({
       source: availableTags,
       minLength: 0,
@@ -894,47 +572,6 @@ $_SESSION['WSTATIONS_STATUS_LAST_UPDATE'] = time();
     setInterval(refreshStation,10000);
     $("#context").mousemove( getGraphMousePos );
     $("#contextForecast").mousemove( getGraphForecastMousePos );
-    $(document).click( userMenuAutoClose );
-    $('.user-menu-modal').mouseleave( userMenuAutoClose );
-    $('.menu-spot-quick-nav').mouseleave( autoCloseQuickNav );
-    calculateHeaderBodyHeight();
-    headerHeight = document.getElementById('myHeader').offsetHeight;
-    //console.log(headerHeight);
-    <?php 
-      //auto load content (from a link to open content in a new tab)
-      echo $autoLoadContentJs;
-    ?>
-    /////////////////////debug - test
-    jQuery('body').on('click', '#sp_form_submit', function() {
-      jQuery('#sp_form').submit(function(e) {
-        formObj = jQuery(this);
-        formURL = formObj.attr('action');
-        formData = new FormData(this);
-    //console.log(formObj);
-    //console.log(formURL);
-    //console.log(formData);
-        jQuery.ajax({
-          url: formURL,
-          type: 'POST',
-          data:  formData,
-          mimeType: "multipart/form-data",
-          contentType: false,
-          cache: false,
-          processData: false,
-          beforeSend: ajaxSpNewBeforeSend,
-            xhr: ajaxSpNewXhr,
-          success: ajaxSpNewSuccess,
-          complete: ajaxSpNewComplete,
-          error: ajaxSpNewError          
-        });
-        e.preventDefault();
-        jQuery('#sp_form').unbind();
-        var formObj = null;
-        var formURL = null;
-        var formData = null;
-      });
-    });
-    checkAcceptCookie();
   }
   $( document ).ready( layoutReady );
   </script>
