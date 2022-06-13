@@ -9,7 +9,10 @@ $rootPath=str_replace('\\','/',$rootPath);
 date_default_timezone_set('Europe/Zurich');
 $windspotsLog =  $rootPath."/log";
 // API
+// org
 $windspotsAPI = $rootPath."/../api/library/windspots";
+// com
+//$windspotsAPI = $rootPath."/library/windspots";
 require_once $windspotsAPI.'/db.php';
 //
 function logIt($message) {
@@ -148,8 +151,8 @@ class WindspotsHelper{
     if(!empty($stationData['water_id'])){
         $waterTemperatueResult = WindspotsDB::getStationSensorData($stationData['water_id'], true, null, null, null);
         // logIt("Water: ".json_encode($waterTemperatueResult));
-        if(is_array($waterTemperatueResult) && isset($waterTemperatueResult['temperature']) && !empty($waterTemperatueResult['temperature'])){
-            $lastValueTemperatureWater = $waterTemperatueResult['temperature'];
+        if(is_array($waterTemperatueResult) && isset($waterTemperatueResult[0]['temperature']) && !empty($waterTemperatueResult[0]['temperature'])){
+            $lastValueTemperatureWater = $waterTemperatueResult[0]['temperature'];
         }
     }
     // ---- Graph Data (1h) ----
@@ -369,12 +372,13 @@ class WindspotsHelper{
       $scaleForecast24[] = str_replace( ":", "h", date('G:', $i));
     }
     for($i = strtotime($fromForecast6h); $i <= strtotime($toForecast24h); $i += (60 * 60)){
-      $forecastWind24[$i]      = null; 
-      $forecastDirection24[$i] = null; 
-      $forecastGust24[$i]      = null; 
+      $forecastWind24[$i]      = null;
+      $forecastDirection24[$i] = null;
+      $forecastGust24[$i]      = null;
     }
     $forecast = windspotsDB::getStationForecast($stationName, $fromForecast6h, $toForecast24h);
     if(is_array($forecast) && count($forecast) > 0){
+      // error_log("getStationForecast : ".count($forecast));
       foreach($forecast as $key => $data){
         $time = strtotime($data['reference_time']);
         if(array_key_exists($time, $forecastWind24) && !empty($data['speed'])){
@@ -455,7 +459,7 @@ class WindspotsHelper{
       if(($stationData['spot_type'] & ST_ACTIVITIES_PARA) == true){
         $activitiesHtml .= '<div class="cellIcoActivity"><img src="svg/paraglide.svg" /></div>';
       }
-      if(($stationData['spot_type'] & ST_ACTIVITIES_NAGE) == true){
+      if(($stationData['spot_type'] & ST_ACTIVITIES_SWIM) == true){
         $activitiesHtml .= '<div class="cellIcoActivity"><img src="svg/swim.svg" /></div>';
       }
     }
@@ -491,12 +495,41 @@ class WindspotsHelper{
             && isset($station['latitude']) && !empty($station['latitude'])
             && isset($station['longitude']) && !empty($station['longitude'])
           ){  //Leaflet
+            $rotation = 0;
+            $force = 0;
             $icoMarker = 'spotIcon';
-            if($stationStatus[$station['station_name']] == false){
-                $icoMarker = 'spotDisabledIcon';
+            $sensorData = WindspotsDB::getStationSensorData($station['wind_id'], true, null, null, null);
+            if($sensorData !== null) {
+              // logIt("Helper 500 ".json_encode($sensorData));
+              if ($sensorData[0]['speed'] > 0)
+                $force = round($sensorData[0]['speed'] / 1.852, 1);
+              $rotation = $sensorData[0]['direction'];
+              $icoMarker = 'round_white';
+              if ($force >= 0 && $force < 5) {
+                $icoMarker = 'round_blue';
+              }
+              if ($force >= 5 && $force < 10) {
+                $icoMarker = 'round_green';
+              }
+              if ($force >= 10 && $force < 15) {
+                $icoMarker = 'round_orange';
+              }
+              if ($force >= 15 && $force < 20) {
+                $icoMarker = 'round_red';
+              }
+              if ($force >= 20 && $force < 35) {
+                $icoMarker = 'round_violet';
+              }
+              if ($force >= 35) {
+                $icoMarker = 'round_violet';
+              }
             }
-            //$markerStation .= 'var marker = L.marker(['.$station['latitude'].', '.$station['longitude'].'], {icon: '.$icoMarker.', stationName: \''.$station['station_name'].'\', title: "'.utf8_encode($station['display_name']).'"}); ';  //myCustomId: 5454,
-            $markerStation .= 'var marker = L.marker(['.$station['latitude'].', '.$station['longitude'].'], {icon: '.$icoMarker.', stationName: \''.$station['station_name'].'\', title: "'.$station['display_name'].'"}); ';  //myCustomId: 5454,
+            if( $stationStatus[$station['station_name']] == false ){
+              $icoMarker = 'spotDisabledIcon';
+              $rotation = 0;
+            }
+            // $markerStation .= 'var marker = L.marker(['.$station['latitude'].', '.$station['longitude'].'], {icon: '.$icoMarker.', stationName: \''.$station['station_name'].'\', title: "'.$station['display_name'].'"}); ';  //myCustomId: 5454,
+            $markerStation .= 'var marker = L.rotatedMarker(['.$station['latitude'].', '.$station['longitude'].'], {icon: '.$icoMarker.', stationName: \''.$station['station_name'].'\', title: "'.$station['display_name'].'", rotationAngle: '.$rotation.'});';  //myCustomId: 5454,
             $markerStation .= 'marker.on(\'click\', onMarkerClick); ';
             $markerStation .= 'marker.addTo(map); ';
             $markerStation .= 'var marker = null; ';
@@ -516,19 +549,23 @@ class WindspotsHelper{
       $markersStation = $_SESSION['WSTATIONS_MAP_MARKERS_BY_STATION'];
     }
     $resultMarkers = '';
+    // logIt("Helper 549 ".json_encode($sensorData));
     if(is_array($markersStation) && count($markersStation) > 0){
       $markerId = 1;
       foreach($markersStation as $key => $marker){
         $tmpMarker = '';
-        //Leaflet
+        // logIt("Helper 553 - key:  ".$key." stationName: ".$stationName);
+        // Leaflet
         if($key != $stationName){
           $resultMarkers .= $marker;
         }else{
           $icoMarker = 'spotActiveIcon';
+          $rotation = 0;
           if(isset($_SESSION['WSTATIONS_STATUS'][$stationName]) && $_SESSION['WSTATIONS_STATUS'][$stationName] == false){
               $icoMarker = 'spotDisabledIcon';
           }
           $tmpMarker .= 'var marker = L.marker(['.$stations[$stationName]['latitude'].', '.$stations[$stationName]['longitude'].'], {icon: '.$icoMarker.', stationName: \''.$stationName.'\', title: "'.$stations[$stationName]['display_name'].'"}); ';  //myCustomId: 5454,
+          // $tmpMarker .= 'var marker = L.rotatedMarker(['.$station['latitude'].', '.$station['longitude'].'], {icon: '.$icoMarker.', stationName: \''.$station['station_name'].'\', title: "'.$station['display_name'].', rotationAngle: '.$rotation.'"}); ';  //myCustomId: 5454,
           $tmpMarker .= 'marker.on(\'click\', onMarkerClick); ';
           $tmpMarker .= 'marker.addTo(map); ';
           $tmpMarker .= 'var marker = null; ';
@@ -537,7 +574,7 @@ class WindspotsHelper{
       }
     }
     $imgKeyTime = strtotime(date("Y-m-d H:i:s"));
-    $imgUrl = 'https://windspots.org/images.php?imagedir=capture&image='.$stationName.'1'._WINDSPOTS_SPOTS_DEFAULT_IMG_EXT.'&r='.$imgKeyTime;
+    $imgUrl = _WINDSPOTS_IMAGE_URL.'?imagedir=capture&image='.$stationName.'1.jpg'.'&r='.$imgKeyTime;
     //check if need reverse chart data
     if($graphDirection == 'rtl'){
       //1h
@@ -574,7 +611,7 @@ class WindspotsHelper{
       'station_name' => $stationName,
       'display_name' => $stationData['display_name'],
       'activities' => $activitiesHtml,
-      'last_data_received' => date('j m Y - G:i', strtotime($stationData['data_time'])),
+      'last_data_received' => date('j/m/Y - G:i', strtotime($stationData['data_time'])),
       'lat' => $stationData['latitude'],
       'lng' => $stationData['longitude'],
       'infos_windspots' => self::lang('NO_NEWS_FOR_NOW'),
@@ -807,7 +844,10 @@ class WindspotsHelper{
   }
   private static function generateConfigWindUnitsList(){
     $result = '';
-    $userPrefWindUnit = $_SESSION['W_UNIT'];
+    $userPrefWindUnit = '_kts';
+    if(isset($_SESSION['W_UNIT'])) {
+      $userPrefWindUnit = $_SESSION['W_UNIT'];
+    }
     $selected_KMH = '';
     $selected_BFT = '';
     $selected_MS = '';
@@ -840,9 +880,9 @@ class WindspotsHelper{
     $stations = "";
     $userPrefFavStation = "";
     if(isset($_SESSION['WSTATIONS']))
-    	$stations = $_SESSION['WSTATIONS'];
+      $stations = $_SESSION['WSTATIONS'];
     if(isset($_SESSION['W_STATION']))
-    	$userPrefFavStation = $_SESSION['W_STATION'];
+      $userPrefFavStation = $_SESSION['W_STATION'];
     //user config - station list (preference - favorite stations) -> auto load station after user login
     $result =  '<select id="pref_fav_station">';
     $result .= '<option value="1111">' . self::lang('PREFERENCES_FAVORITE_STATION_DEFAULT_VALUE') . '</option>';
@@ -860,9 +900,9 @@ class WindspotsHelper{
     return $result;
   }
   private static function generateConfigGraphDirectionList(){
-  	$userPrefGraphDirection = "";
-  	if(isset($_SESSION['W_GRAPH_LTR']))
-    	$userPrefGraphDirection = $_SESSION['W_GRAPH_LTR'];
+    $userPrefGraphDirection = "";
+    if(isset($_SESSION['W_GRAPH_LTR']))
+      $userPrefGraphDirection = $_SESSION['W_GRAPH_LTR'];
     $result = '';
     $result .= '<select id="pref_graph_direction">';
     $ltrSelected = '';
@@ -879,9 +919,9 @@ class WindspotsHelper{
     return $result;
   }
   private static function generateConfigGraphForecastDirectionList(){
-  	$userPrefGraphDirection = "";
-  	if(isset($_SESSION['W_GRAPH_PREV_LTR']))
-    	$userPrefGraphDirection = $_SESSION['W_GRAPH_PREV_LTR'];
+    $userPrefGraphDirection = "";
+    if(isset($_SESSION['W_GRAPH_PREV_LTR']))
+      $userPrefGraphDirection = $_SESSION['W_GRAPH_PREV_LTR'];
     $result = '';
     $result .= '<select id="pref_graph_previ_direction">';
     $ltrSelected = '';
