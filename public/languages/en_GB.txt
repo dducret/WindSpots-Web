@@ -1,6 +1,6 @@
 WINDSPOTS=WindSpots
 VERSION=Version
-WINDSPOTS_SARL=Windspots Sàrl
+WINDSPOTS_SARL=Association Windspot
 LANGUAGE=Language
 GRAPH_DIRECTION=Graph direction
 GRAPH_PREVI_DIRECTION=Graph provisional direction
@@ -63,129 +63,108 @@ PREFERENCES_FAVORITE_STATION_DEFAULT_VALUE=Any (view map)
 PREFERENCES_LANGUAGE_FRENCH=French
 PREFERENCES_LANGUAGE_ENGLISH=English
 PREFERENCES_LANGUAGE_GERMAN=German
+SEARCH_A_SPOT=Search
 ;content article website
 ;--About
 CONTENT_ABOUT_TITLE=About Windspots
-CONTENT_ABOUT_SUB_TITLE_TARGET=The goal
-CONTENT_ABOUT_TARGET_1=Provide weather information in real time and images of several "spots" in the world combined on our site.
-CONTENT_ABOUT_SUB_TITLE_IDEA=Where did the idea
-CONTENT_ABOUT_IDEA_1=Two lovers windsurfing and paragliding a bit lazy who wanted to see if it was worth leaving home to practice their favorite sport...
-CONTENT_ABOUT_IDEA_2=Friends, wives offspring who want to help ... and lots and lots of time, money, sweat and effort for a beautiful project that interests, informs and already appeals to a wide audience!
-CONTENT_ABOUT_SUB_TITLE_SOCIETY=The Company
-CONTENT_ABOUT_SOCIETY_1=WindSpots Sàrl was founded in 2004 by Denis Ducret and Thierry Wasmer.
-CONTENT_ABOUT_SOCIETY_2=WindSpots Sàrl is based in Geneva, Switzerland.
-CONTENT_ABOUT_SOCIETY_3=WindSpots Sàrl is registered with the trade register of La Chambre de Commerce de Genève, Switzerland, under registration number CH-660.9.481.004-9.
-CONTENT_ABOUT_SUB_TITLE_ASSOCIATION=Association WindSpots
-CONTENT_ABOUT_ASSOCIATION_1=The shareholder of WindSpots Sàrl decided, in December 2021, to stop the WindSpots.com adventure. As he wishes to see the project continue, he has decided to publish all the programs as free and open source software under the GPLv3 license and the two electronic boards under the CERN Open Hardware License
-CONTENT_ABOUT_ASSOCIATION_2=API
-CONTENT_ABOUT_ASSOCIATION_3=Receiver of information sent by WindSpots weather stations
-CONTENT_ABOUT_ASSOCIATION_4=Web Site
-CONTENT_ABOUT_ASSOCIATION_5=Weather Stations Status
-CONTENT_ABOUT_ASSOCIATION_6=Stations (All information, schema, source code for building a WindSpots Weather Station)
+CONTENT_ABOUT_SUB_TITLE_TARGET=The Goal
+CONTENT_ABOUT_TARGET_1=Communicate all weather information in real time and by images of several "spots" in the world grouped together on our windspots.org site.
+CONTENT_ABOUT_SUB_TITLE_IDEA=Where did the idea come from?
+CONTENT_ABOUT_IDEA_1=Two lazy windsurfing or paragliding enthusiasts who wanted to see if it was worth leaving home to practice their favorite sport...
+CONTENT_ABOUT_IDEA_2=Friends, wives, offspring who want to help them... And lots and lots of time, money, sweat and effort for a beautiful project that already interests, informs and pleases a very large audience!
+CONTENT_ABOUT_SUB_TITLE_SOCIETY=WindSpots Association
+CONTENT_ABOUT_SOCIETY_1=WindSpots is a Sàrl created in 2004 by Denis Ducret and Thierry Wasmer. The founders decided in December 2021 to stop the WindSpots.com adventure. As they wish to see the project continue they decided to publish all the programs as free and open source software under the GPLv3 license and the two electronic boards under the CERN Open Hardware License.
+CONTENT_ABOUT_SOCIETY_2=The WindSpots Association created in 2022 is based in Geneva, Switzerland. Registered in the commercial register of Geneva, Switzerland, under number CHE-470.828.331.
+CONTENT_ABOUT_SOCIETY_3=TThe WindSpots Association aims to maintain and develop the network of weather stationseather stations, software (<a href="https://github.com/dducret" target="_blank">API, Stations, Status</ a>) and the <a href="https://github.com/dducret/WindSpots-Hardware" target="_blank">necessary electronics</a> as well as the website <a href="https:// github.com/dducret/WindSpots-Web" target="_blank">web</a>.
 CONTENT_ABOUT_SUB_TITLE_CONTACT_INFORMATION=Our contact details
-CONTENT_ABOUT_CONTACT_INFORMATION_1=Windspots Sàrl<br />36, Rue du XXXI-Décembre<br />1204 Genève<br />Suisse
+CONTENT_ABOUT_CONTACT_INFORMATION_1=Windspots Association<br />36, Rue du XXXI-Décembre<br />1207 Geneva<br />Switzerland
 CONTENT_ABOUT_CONTACT_INFORMATION_2=Email:
 ;--Contact
 CONTENT_CONTACT_TITLE=Contact
-CONTENT_CONTACT_1=WindSpots Sàrl is registered and based in Geneva, Switzerland.
-CONTENT_CONTACT_2=For questions about WindSpots, service and website or you want to send or receive documents, correspondence, notices or other communications regarding WindSpots.com, service, website or information release, please contact WindSpots Sàrl directly.
-CONTENT_CONTACT_3=WindSpots Sàrl does not accept or does not accept any other home, no other location or any other office in the world than the one recorded in Geneva.
+CONTENT_CONTACT_1=WindSpots Association is registered and based in Geneva, Switzerland.
+CONTENT_CONTACT_2=If you have any questions about WindSpots.org, the service and the website or if you wish to send or receive any documents, correspondence, notices or other communications with respect to WindSpots.org, the service, the website or press enquiries, please contact The WindSpots Association directly.
+CONTENT_CONTACT_3=The WindSpots Association does not accept or assume any other domicile, location or office in the world other than that registered in Geneva.
 CONTENT_CONTACT_SUB_TITLE_NAME_ADDRESS=Address
-CONTENT_CONTACT_NAME_ADDRESS_1=Windspots Sàrl
-CONTENT_CONTACT_NAME_ADDRESS_2=36, Rue du XXXI-Décembre
-CONTENT_CONTACT_NAME_ADDRESS_3=1204 Genève
-CONTENT_CONTACT_NAME_ADDRESS_4=Suisse
-CONTENT_CONTACT_SUB_TITLE_CEO=Directors
+CONTENT_CONTACT_NAME_ADDRESS_1=Windspot Association
+CONTENT_CONTACT_NAME_ADDRESS_2=36, Rue du XXXI-December
+CONTENT_CONTACT_NAME_ADDRESS_3=1207 Geneva
+CONTENT_CONTACT_NAME_ADDRESS_4=Switzerland
+CONTENT_CONTACT_SUB_TITLE_CEO=President
 CONTENT_CONTACT_CEO_1=Denis Ducret
-CONTENT_CONTACT_SUB_TITLE_CONTACT_INFORMATION=Contact information
+CONTENT_CONTACT_SUB_TITLE_CONTACT_INFORMATION=Contact Information
 CONTENT_CONTACT_INFORMATION_1=Email:
 ;--FAQ
 CONTENT_FAQ_TITLE=FAQ
-CONTENT_FAQ_SUB_TITLE_REMAIN_FREE=Is the site of WindSpots going to remain free ?
-CONTENT_FAQ_REMAIN_FREE_1=We are going to try to keep the free site however certain zones of the site will be accessible only with a subscription. The site can remain free if we have enough clicks on our announcers and if we have enough subscribers for our paid services.
-CONTENT_FAQ_SUB_TITLE_HOW_SUB_TO_REMOVE_ADVERTISE=How can I subscribe ?
-CONTENT_FAQ_REMAIN_HOW_SUB_TO_REMOVE_ADVERTISE_1=Since the financial support site that will be online soon you can subscribe to Windspots for one low price and receive a personal access completely without advertising.
-CONTENT_FAQ_SUB_TITLE_HOW_CUSTOM_WEBSITE=Can I custom the site ?
-CONTENT_FAQ_HOW_CUSTOM_WEBSITE_1=Yes you can :
-CONTENT_FAQ_HOW_CUSTOM_WEBSITE_2=- Arrange the display order of the widgets on the main page in slippery (drag & drop) in the desired order or remove them by clicking on the cross. It is also possible from the "Preferences" menu under the icon of the gear that you can customize your view of the main page.
-CONTENT_FAQ_HOW_CUSTOM_WEBSITE_3=- Select 2 styles of different views: the spots by map or by list spots. Click the "my spot" menu located at the top and select the option you prefer under "Menu Style".
-CONTENT_FAQ_HOW_CUSTOM_WEBSITE_4=- Change the appearance and the display order of your favorite spots and choose if you want to see or not the stations that have failed. Go to "my spot" menu and configure the options chosen in the corresponding tables.
-CONTENT_FAQ_SUB_TITLE_SELECT_STATION_FOR_MAP=Can we choose the stations to display in view geographic map?
-CONTENT_FAQ_SELECT_STATION_FOR_MAP_1=No, if you choose the display style by map, all stations marked on the map will be displayed below. There are only view stations that allows you to select stations to display and position. The maps are changed by clicking on the arrows that are below.
-CONTENT_FAQ_SUB_TITLE_WIND_HISTORY=Is there a history of the data ?
-CONTENT_FAQ_WIND_HISTORY_1=Beyond the history of one hour (visible on the page of the selected station), a daily, weekly and monthly history will be available, but this service will be paying.
-CONTENT_FAQ_SUB_TITLE_HOW_READ_CHART=How should I read the graph of the wind ?
-CONTENT_FAQ_HOW_READ_CHART_1=The horizontal values at the bottom of the graph indicate the minutes elapsed, the vertical values on the left of the graph indicate the speed of the wind. Thus, the graph is read from the left (the most recent value) to the right (the oldest value).
-CONTENT_FAQ_SUB_TITLE_ARROW_DIRECTION=What is indicated by the arrows ?
-CONTENT_FAQ_ARROW_DIRECTION_1=The arrows indicate the flow of the wind (the direction where the wind blows).
-CONTENT_FAQ_SUB_TITLE_ARROW_DIRECTION_MAP_CHART=Why the arrow in the winds graphic is different from that on the map ?
-CONTENT_FAQ_ARROW_DIRECTION_MAP_CHART_1=The datas in the graph are updated by the station while the map is updated by the server. There may therefore be a difference between the two information.
-CONTENT_FAQ_SUB_TITLE_MISSING_ARROW_CHART=Why are missing arrows in the graph ?
-CONTENT_FAQ_MISSING_ARROW_CHART_1=Sometimes stations don't transmit information. As we don't extrapolate values there is thus no arrow.
-CONTENT_FAQ_SUB_TITLE_RELIABILITY_DATA=Which is the reliability of the supplied data ?
-CONTENT_FAQ_RELIABILITY_DATA_1=We still have no system of calibration of our devices.
-CONTENT_FAQ_RELIABILITY_DATA_2=The wind is generally measured in 5 meters high and at the end of quay.
-CONTENT_FAQ_RELIABILITY_DATA_3=The temperature of the water is taken in 1 meter of bottom in edge of lake.
-CONTENT_FAQ_RELIABILITY_DATA_4=The air temperature is taken in the shade, but it is often influenced by outer elements (walls, chimney, ...).
-CONTENT_FAQ_SUB_TITLE_DATA_NOT_UPDATED=Why the data are not up to date ?
-CONTENT_FAQ_DATA_NOT_UPDATED_1=Simply because the station doesn't send correct data and as it is about data in real time which we don't "hide", you read what it was. We also have a monitoring system which indicates us the breakdowns and as soon as we can, we correct them.
-CONTENT_FAQ_SUB_TITLE_NOT_TEMPERATUE_ALL_SPOTS=Why is not there a temperature on certain spots ?
-CONTENT_FAQ_NOT_TEMPERATUE_ALL_SPOTS_1=Because the measurement station is too much far from the lake or cannot (for example to Dorigny).
-CONTENT_FAQ_SUB_TITLE_ADD_NEW_SPOTS=Is it going to have new spots ?
-CONTENT_FAQ_ADD_NEW_SPOTS_1=Yes, but the deployment is constrained by our budget.
-CONTENT_FAQ_ADD_NEW_SPOTS_2=Financial support from <a href="https://vip.windspots.com" target="_blank">https://vip.windspots.com</a> where you can subscribe to take away commercials, to make donations, buying and marketing products mainly to offer new spots and make the sponsor financially by the community.
-CONTENT_FAQ_SUB_TITLE_ACQUIRE_PRIVATE_STATION=Can I purchase a private weather station Windspots ?
-CONTENT_FAQ_ACQUIRE_PRIVATE_STATION_1=Yes, you can use to acquire weather station reserved for members of a club or association, only visible to them in the site Windspots. Thank you to apply via email to info@windspots.com.
-CONTENT_FAQ_SUB_TITLE_INTEGRATE_DATA_IN_MY_WEBSITE=Can I to integrate the data of WindSpots into my site ?
+CONTENT_FAQ_SUB_TITLE_REMAIN_FREE=Will the Windspots site remain free?
+CONTENT_FAQ_REMAIN_FREE_1=Yes, this is one of the reasons that motivated the creation of the association.</br>However, to function, the association needs members and their contributions.
+CONTENT_FAQ_SUB_TITLE_ASSOCIATION=How to join the association?
+CONTENT_FAQ_ASSOCIATION_1=It's simple, either by sending an email to <a href="mailto:info@windspots.org">info@windspots.org</a>, or by registering via the <a href="https: //forum.windspots.org" target="_blank">forum</a>.
+CONTENT_FAQ_SUB_TITLE_HOW_CUSTOM_WEBSITE=Can I customize the site?
+CONTENT_FAQ_HOW_CUSTOM_WEBSITE_1=Yes, you can, from the top right menu:
+CONTENT_FAQ_HOW_CUSTOM_WEBSITE_2=- Choose the language directly.
+CONTENT_FAQ_HOW_CUSTOM_WEBSITE_3=- Choose through the settings icon: the wind unit, the default station, the graphical direction (present on the right or on the left).
+CONTENT_FAQ_HOW_CUSTOM_WEBSITE_4=Warning your preferences are stored in a cookie.
+CONTENT_FAQ_SUB_TITLE_WIND_HISTORY=Is there a wind data history?
+CONTENT_FAQ_WIND_HISTORY_1=Yes, through the "12h or 24h" tabs which provides you with 12 or 24 hours of spot weather data from a given date and time.
+CONTENT_FAQ_SUB_TITLE_HOW_READ_CHART=How do I read the wind chart?
+CONTENT_FAQ_HOW_READ_CHART_1=The horizontal values ​​at the bottom of the chart indicate the elapsed minutes, the vertical values ​​at the left of the chart indicate the wind speed. Thus, the graph is read from left (most recent value) to right (oldest value).
+CONTENT_FAQ_SUB_TITLE_ARROW_DIRECTION=What does the direction of the arrows indicate?
+CONTENT_FAQ_ARROW_DIRECTION_1=The arrows indicate the wind flow (the direction the wind is going).
+CONTENT_FAQ_SUB_TITLE_ARROW_DIRECTION_MAP_CHART=Why is the arrow in the wind chart sometimes oriented differently than on the map?
+CONTENT_FAQ_ARROW_DIRECTION_MAP_CHART_1=Chart data is updated by station while map is updated by server. There may therefore be a measure of difference between the two pieces of information.
+CONTENT_FAQ_SUB_TITLE_MISSING_ARROW_CHART=Why are arrows missing in the chart?
+CONTENT_FAQ_MISSING_ARROW_CHART_1=Sometimes stations do not transmit information. As we are not extrapolating values, so there are no arrows at this time.
+CONTENT_FAQ_SUB_TITLE_RELIABILITY_DATA=How reliable is the data provided?
+CONTENT_FAQ_RELIABILITY_DATA_1=Wind is usually measured between 3 to 5 meters above the ground. Some weather vanes no longer give us data when the wind exceeds a certain speed (about 70 km/h).
+CONTENT_FAQ_RELIABILITY_DATA_2=The water temperature is taken at 1 meter depth at the exit of the lake.
+CONTENT_FAQ_RELIABILITY_DATA_3=The air temperature is taken in the shade, but it is often influenced by external elements (walls that "heat", chimney, ...)
+CONTENT_FAQ_RELIABILITY_DATA_4=We do not yet have a calibration system for the measurements of our devices, the data is not 100% reliable.
+CONTENT_FAQ_SUB_TITLE_DATA_NOT_UPDATED=Why is the data not always up to date?
+CONTENT_FAQ_DATA_NOT_UPDATED_1=Sometimes stations no longer send data for various reasons, such as GSM, Wifi, power outages, lack of sun for solar powered ones or for technical reasons related to the electronic components of the measurement box. The weather stations are sometimes subject to difficult weather conditions and require regular technical maintenance that we do not always have the financial means to put in place.
+CONTENT_FAQ_SUB_TITLE_NOT_TEMPERATUE_ALL_SPOTS=Why is there no temperature on some spots?
+CONTENT_FAQ_NOT_TEMPERATUE_ALL_SPOTS_1=Because on some spots the Windspots weather station is too far from the lake to properly receive the measurements emitted by the temperature sensor.
+CONTENT_FAQ_SUB_TITLE_ADD_NEW_SPOTS=How to get new spots?
+CONTENT_FAQ_ADD_NEW_SPOTS_1=The association publishes the manual to make a station: <a href="https://github.com/dducret/WindSpots-Hardware" target="_blank">WindSpots Hardware</a>
+CONTENT_FAQ_ADD_NEW_SPOTS_2=You can also buy a station from WindSpots Sàrl info@windspots.com.
+CONTENT_FAQ_SUB_TITLE_INTEGRATE_DATA_IN_MY_WEBSITE=Can I embed WindSpots data into my website?
 CONTENT_FAQ_ACQUIRE_INTEGRATE_DATA_IN_MY_WEBSITE_1=Yes
-CONTENT_FAQ_ACQUIRE_INTEGRATE_DATA_IN_MY_WEBSITE_2=it is necessary to send a request at info@windspots.com and if you respect the conditions this service is free.
-CONTENT_FAQ_SUB_TITLE_WINDSPOTS_ON_MOBILE=How WindSpots.com see on my mobile phone ?
-CONTENT_FAQ_WINDSPOTS_ON_MOBILE_1=A Windspots App is currently only available on Android. Since the "Play Store" do a search with "Windspots". Our application is one with our logo and edited by Windspots Sàrl. The iPhone and Windows Phone versions are under development.
-CONTENT_FAQ_SUB_TITLE_WINDSPOTS_DATA_BY_PHONE=Can we access data from stations WindSpots by phone ?
-CONTENT_FAQ_WINDSPOTS_DATA_BY_PHONE_1=No, we have stopped this service in January 2011.
-CONTENT_FAQ_SUB_TITLE_WHO_IS_WINDSPOTS=Who is WindSpots ?
-CONTENT_FAQ_WHO_IS_WINDSPOTS_1=WindSpots is Sàrl Geneva company (Switzerland) created by Thierry Wasmer and Denis Ducret. Both partners work full-time and they engage in WindSpots during their free time.
+CONTENT_FAQ_ACQUIRE_INTEGRATE_DATA_IN_MY_WEBSITE_2=Either by using an iframe, for example for Les Crêts:</br> https://windspots.org/iframe.php?station=CHGE04&unit=kmh&language=fr_FR&graph=ltr&forecast=ltr&map=false</br>or by using the <a href="https://github.com/dducret/WindSpots-API" target="_blank">api</a>: api.windspots.org.
+CONTENT_FAQ_SUB_TITLE_WINDSPOTS_ON_MOBILE=How do I view WindSpots.com on my mobile phone?
+CONTENT_FAQ_WINDSPOTS_ON_MOBILE_1=A Windspots App is available for iPhone and Android via the stores. The application developed by WindSpots Sàrl is chargeable.
 ;--Terms of use
-CONTENT_TERMS_TITLE=Terms of Use
-CONTENT_TERMS_SUB_TITLE_GENERALITY=General information
-CONTENT_TERMS_GENERALITY_1=We welcome you to our website. Please read carefully the terms of use contained in this document and note that the use of this website implies your agreement to these conditions.
-CONTENT_TERMS_SUB_TITLE_INFORMATION_UPDATED=Accuracy, completeness and updating of information
-CONTENT_TERMS_INFORMATION_UPDATED_1=Windspots Sàrl makes every effort to provide accurate, comprehensive and up-to-date information on its website. Windspots Sàrl declines any responsibility for any inaccurate, incomplete or erroneous information published on this website.
+CONTENT_TERMS_TITLE=Terms of Service
+CONTENT_TERMS_SUB_TITLE_GENERALITY=General
+CONTENT_TERMS_GENERALITY_1=We welcome you to our website. Please read the terms of use contained herein carefully, and note that use of this website constitutes your agreement to these terms.
+CONTENT_TERMS_SUB_TITLE_INFORMATION_UPDATED=Accuracy, completeness and up-to-date information
+CONTENT_TERMS_INFORMATION_UPDATED_1=The Windspots Association makes every effort to provide accurate, complete and up-to-date information on its website. However, the WindSpots Association declines all responsibility in the event of inaccurate, incomplete or erroneous information published on this website.
 CONTENT_TERMS_SUB_TITLE_COPYRIGHT=Copyright
-CONTENT_TERMS_COPYRIGHT_1=All copyrights and other intellectual property rights in the form of texts, images or other content made available on this website are the property of Windspots Sàrl or are published with the authorization of the owner concerned. Any duplicate and any distribution, reproduction or other use of the information, marks, images, texts or logos, in whole or in part, for commercial purposes are strictly forbidden. Any request for permission to reproduce the information published on this website should be addressed to Windspots Sàrl at <a href="mailto:info@windspots.com">info@windspots.com</a>.
+CONTENT_TERMS_COPYRIGHT_1=All copyright and other intellectual property rights in the form of text, images or other content made available on this website are the property of The WindSpots Association or are published with the authorization of the concerned owner. Any duplicate and any distribution, reproduction or other use of the information, brands, images, texts or logos, in whole or in part, for commercial purposes is strictly prohibited. Any request for authorization to reproduce information published on this website should be addressed to The WindSpots Association at the address <a href="mailto:info@windspots.org">info@windspots.org</a>.
 CONTENT_TERMS_SUB_TITLE_DATA=Your data made available to us
-CONTENT_TERMS_DATA_1=At Windspots Sàrl, we place a great deal of importance on protecting your personal data (see <span class="span_link" onclick="loadContent('data');">data protection statement</span>). As a user of the website, you are fully responsible for the information you send us and you are the guarantor of the non-violation of the rights of others.
-CONTENT_TERMS_SUB_TITLE_RESPONSABILITY=Limitation of warranty and exclusion of liability
-CONTENT_TERMS_RESPONSABILITY_1=The availability of this website is based on current knowledge and available information. Consequently, Windspots Sàrl can in no way guarantee or guarantee, either explicitly or implicitly, that the contents of this website are complete, accurate, reliable and up to date, that the rights of others are not violated, Access to this website is not interrupted, and that this website has no malfunction or virus. All such information does not constitute any warranty, assurance or liability on the part of Windspots Sàrl. Access to the website and its use and the publication of information are at your own risk.
-CONTENT_TERMS_SUB_TITLE_MODIFICATION=Changes
-CONTENT_TERMS_MODIFICATION_1=Windspots Sàrl reserves the right to modify the present conditions of use or the content of the website without prior notice, in particular the products and services mentioned and / or their availability, prices and information on the products.
-CONTENT_TERMS_SUB_TITLE_LEGAL=Applicable right
-CONTENT_TERMS_LEGAL_1=Any dispute or claim arising out of or in connection with the use of this website is subject to Swiss law. The exclusive jurisdiction is that of the headquarters of Windspots Sàrl in Geneva.
-CONTENT_TERMS_UPDATED=Updated: November 2013
+CONTENT_TERMS_DATA_1=The Windspots Association attaches great importance to the protection of your personal data (see the <span class="span_link" onclick="loadContent('data');">data protection declaration</span>). As a user of the website, you are fully responsible for the information you send to us and you guarantee that the rights of others are not violated.
+CONTENT_TERMS_SUB_TITLE_RESPONSABILITY=Warranty Limitation and Disclaimer
+CONTENT_TERMS_RESPONSABILITY_1=The provision of this website is based on current knowledge and available information. Consequently, the WindSpots Association cannot in any way guarantee or ensure, either explicitly or implicitly, that the contents of this website are complete, accurate, reliable and up-to-date, that the rights of others are not violated, that access to this website is not interrupted, and that this website does not present any malfunction or virus. All this information does not constitute any guarantee, assurance or liability on the part of the WindSpots Association. Access to and use of the website and the publication of information are at your own risk.
+CONTENT_TERMS_SUB_TITLE_MODIFICATION=Modifications
+CONTENT_TERMS_MODIFICATION_1=The Windspots Association reserves the right to modify these terms of use or the content of the website without prior notice.
+CONTENT_TERMS_SUB_TITLE_LEGAL=Applicable law
+CONTENT_TERMS_LEGAL_1=Any dispute or claim arising out of or in connection with the use of this website is subject to Swiss law. The exclusive jurisdiction is that of the headquarters of the WindSpots Association in Geneva.
+CONTENT_TERMS_UPDATED=Updated: June 2022
 ;--Data protection
-CONTENT_DATA_TITLE=Data protection
-CONTENT_DATA_SUB_TITLE_GENERALITY=Généralités
-CONTENT_DATA_GENERALITY_1=Nous vous souhaitons la bienvenue sur notre site Internet. Veuillez lire attentivement la déclaration de protection des données contenue dans ce document, et notez que l'utilisation de ce site Internet implique votre accord sur les conditions de cette déclaration.
-CONTENT_DATA_SUB_TITLE_DATA_PROTECTION=Protection des données
-CONTENT_DATA_DATA_PROTECTION_1=Lors de votre visite sur le site Internet de Windspots.com ou de vip.windspots.com, des informations à caractère général sont automatiquement collectées (indépendamment de votre enregistrement sur ce site Internet). Ces informations ne sont pas utilisées en tant que données personnelles. Les serveurs Web stockent les données suivantes par défaut : le nom de votre fournisseur de services Internet, le site Internet à partir duquel vous vous êtes retrouvé sur le nôtre, votre adresse IP, etc. Ces informations sont analysées anonymement. Elles sont utilisées uniquement dans le but d'améliorer l'attractivité, le contenu et les fonctionnalités de notre site Internet. Lorsque les données sont transmises à des prestataires de services externes, nous prenons des mesures techniques et organisationnelles afin de garantir que la réglementation en matière de protection des données soit respectée.
-CONTENT_DATA_DATA_PROTECTION_2=En s'inscrivant sur le site windspots.com ou vip.windspots.com, le Client consent expressément à recevoir des informations de nature publicitaire ou autre de la part de Windsots.com. Le Client peut se désinscrire à tout moment, facilement et gratuitement, en nous contactant par courriel à l'adresse <a href="mailto:info@windspots.com">info@windspots.com</a>. Nous stockons les données personnelles aussi longtemps que nécessaire pour exécuter une prestation de service que vous avez demandé ou pour laquelle vous avez donné votre accord, sauf en cas d'obligations légales contraires, par exemple des délais de conservation soumis à la législation commerciale ou fiscale.
-CONTENT_DATA_DATA_PROTECTION_3=Windspots Sàrl se réserve le droit d'analyser toutes les données récoltées et d'utiliser des informations sur le comportement d'achat sous une forme anonyme à des fins commerciales.
-CONTENT_DATA_DATA_PROTECTION_4=Windsots Sàrl est en droit de radier de ses fichiers informatiques en tout temps un Client inscrit, c'est-à-dire résilier son inscription, avec effet immédiat, sans avoir à justifier sa décision, sans en avertir le Client et sans que le client inscrit en question ne puisse formuler une quelconque prétention vis-à-vis de la société. Cela vaut particulièrement pour les clients inscrits qui contreviendraient aux <span class="span_link" onclick="loadContent('terms');">conditions générales</span>.
-CONTENT_DATA_DATA_PROTECTION_5=Les clients inscrits exclus ne sont pas autorisés à s'inscrire une nouvelle fois comme clients inscrits sur les Sites Internet de Windspots.com, que ce soit sous leur propre nom ou un autre, sans l'accord préalable de Windspots Sàrl.
-CONTENT_DATA_DATA_PROTECTION_6=Windspots Sàrl a mis en place des mesures techniques et organisationnelles de sécurité pour protéger vos données contre les manipulations, la perte, la destruction et l'accès aux personnes non autorisées. Ces mesures sont actualisées et améliorées en permanence en fonction des avancées technologiques. Vos données personnelles sont transmises cryptées de votre ordinateur à notre serveur (et vice-versa) par Internet. Le niveau de cryptage effectif dépend parfois de votre ordinateur. Utilisez la  version la plus récente de votre navigateur pour obtenir un niveau de cryptage de 128 bits
-CONTENT_DATA_DATA_PROTECTION_7=Les cookies sont des informations que le serveur Web place dans le navigateur de votre ordinateur et par le biais desquels vous pouvez être identifié lors de votre prochaine visite sur le site Internet. Lors de votre utilisation de notre site Internet, nous ne plaçons sur le disque dur de votre ordinateur que des cookies qui ont de l'importance pour votre visite sur notre site Internet.  Ces cookies servent exclusivement au contrôle de connexion et à la navigation et vous offrent un meilleur confort d'utilisation lorsque vous parcourez notre site Internet. Les cookies gardent en mémoire certains paramètres de navigation et vous évitent de devoir saisir des données que vous avez déjà saisies précédemment. Les versions actuelles des navigateurs vous proposent l'option de recevoir un message d'avertissement lorsqu'un serveur Web tente de placer un cookie sur votre ordinateur. Vous pouvez accepter ou refuser ces cookies. Par ailleurs, un cookie est placé lorsque vous vous connectez avec vos informations de login. Toutes les données collectées à l'aide de cookies sont conservées par Windspots Sàrl dans un format ne permettant pas de vous identifier.
-CONTENT_DATA_DATA_PROTECTION_8=Vous êtes en droit de vérifier toutes les données personnelles vous concernant que nous avons stockées, et de les faire corriger le cas échéant. Pour ce faire, veuillez nous faire parvenir votre demande par courriel à l'adresse <a href="mailto:info@windspots.com">info@windspots.com</a>.
-CONTENT_DATA_SUB_TITLE_GOOGLE_ANALYTICS=Google Analytics
-CONTENT_DATA_GOOGLE_ANALYTICS_1=Notre site internet utilise Google Analytics, un service d'analyse de sites Internet proposé par Google Inc (« Google »).  Google Analytics utilise des cookies, qui sont des fichiers texte placés sur votre ordinateur, pour aider le site Internet à en analyser votre utilisation. Les informations générées par les cookies concernant votre utilisation de ce site Internet seront transmises et stockées par Google sur un serveur situé aux États-Unis.  En cas d'activation de l'anonymisation d'adresse IP sur ce site Internet, votre adresse IP est toutefois préalablement abrégée par Google dans les États membres de l'Union européenne ou dans d'autres États signataires de l'Accord sur l'Espace économique européen.   Dans certains cas exceptionnels seulement, l'adresse IP est entière transmise à un serveur de Google aux États-Unis, où elle sera abrégée. Pour le compte de l'éditeur de ce site Internet, Google utilisera ces informations dans le but d'évaluer votre utilisation du site Internet, de compiler des rapports sur les activités du site Internet et de fournir d'autres services relatifs à l'utilisation du site Internet et d'Internet à destination de l'éditeur du dit site Internet.  En aucun cas, Google ne mettra votre adresse IP (communiquée par votre navigateur dans le cadre de Google Analytics) en relation avec d'autres données de Google. Vous pouvez empêcher l'installation de cookies par un paramétrage approprié de votre navigateur. Nous vous avertissons toutefois que dans ce cas, vous serez susceptible de ne pas pouvoir utiliser toutes les fonctions de ce site Internet à leur juste mesure. Vous pouvez également empêcher la compilation par Google des données (y compris votre adresse IP)  générées par les cookies et liées à votre utilisation du site Internet ainsi que le traitement de ces données par Google en téléchargeant et installant le plugin navigateur disponible sur le lien suivant : <a href="http://tools.google.com/dlpage/gaoptout?hl=fr" target="_blank">http://tools.google.com/dlpage/gaoptout?hl=fr</a>. En utilisant ce site Internet, vous acceptez l'exploitation de vos données personnelles obtenues par Google de la façon décrite ci-dessus. Pour en savoir plus sur Google et la protection des données, rendez-vous sur : <a href="http://www.google.com/privacy.html" target="_blank">http://www.google.com/privacy.html</a>.
+CONTENT_DATA_TITLE=Data Protection
+CONTENT_DATA_SUB_TITLE_GENERALITY=General
+CONTENT_DATA_GENERALITY_1=We welcome you to our website. Please read the data protection declaration contained in this document carefully, and note that the use of this website constitutes your agreement to the terms of this declaration.
+CONTENT_DATA_SUB_TITLE_DATA_PROTECTION=Data Protection
+CONTENT_DATA_DATA_PROTECTION_1=During your visit to the Windspots.org website, general information is automatically collected. This information is not used as personal data. Web servers store the following data by default: the name of your Internet service provider, the website from which you came to ours, your IP address, etc. This information is analyzed anonymously. They are used solely for the purpose of improving the attractiveness, content and functionality of our website.
+CONTENT_DATA_DATA_PROTECTION_2=WindSpots Association reserves the right to analyze all collected data.
+CONTENT_DATA_DATA_PROTECTION_3=Cookies are pieces of information that the web server places in your computer's browser and through which you can be identified the next time you visit the website. When you use our website, we only place cookies on your computer's hard drive that are relevant to your visit to our website. These cookies are used exclusively for connection control and navigation and offer you better user comfort when you browse our website. Cookies remember certain navigation parameters and prevent you from having to enter data that you have already entered previously. Current versions of browsers offer you the option of receiving a warning message when a web server attempts to place a cookie on your computer. You can accept or refuse these cookies. All data collected using cookies is kept by the WindSpots Association in a format that does not allow you to be identified.
+CONTENT_DATA_DATA_PROTECTION_4=You have the right to check all personal data concerning you that we have stored, and to have them corrected if necessary. To do so, please email your request to us at <a href="mailto:info@windspots.org">info@windspots.org</a>.
 CONTENT_DATA_SUB_TITLE_MODIFICATIONS=Modifications
-CONTENT_DATA_MODIFICATIONS_1=Windspots Sàrl se réserve le droit de modifier la présente déclaration de protection des données ou le contenu de ses sites Internet sans avis préalable, en particulier les produits et services mentionnés et/ou leur disponibilité, ainsi que les prix et informations sur les produits.
-CONTENT_DATA_UPDATED=Mise à jour : Novembre 2013
+CONTENT_DATA_MODIFICATIONS_1=The WindSpots Association reserves the right to modify this data protection declaration or the content of its websites without prior notice, in particular the products and services mentioned and/or their availability, as well as the prices and information on products.
+CONTENT_DATA_UPDATED=Updated: June 2022
 ;--credits
-CONTENT_CREDITS_TITLE=Crédits
-CONTENT_CREDITS_SUB_TITLE_WEBSITE_DEV=Web site development & maintenance
-CONTENT_CREDITS_WEBSITE_DEV_1=<a href="https://www.sdic.ch" target="_blank">SDIC S.A.</a> - Olivier Servettaz, Denis Ducret.
-CONTENT_CREDITS_WEBSITE_DEV_2=<a href="http://www.geoplugin.com/geolocation/" target="_blank">IP Geolocation</a> - <a href="http://www.geoplugin.com/" target="_blank">geoPlugin</a>
-CONTENT_CREDITS_SUB_TITLE_DESIGN=Graphical design
+CONTENT_CREDITS_TITLE=Credits
+CONTENT_CREDITS_SUB_TITLE_WEBSITE_DEV=Website Development & Maintenance
+CONTENT_CREDITS_WEBSITE_DEV_1=<a href="https://www.sdic.ch" target="_blank">SDIC S.A.</a> - Olivier Servettaz, Denis Ducret, <a href="https://www.windspots.org " target="_blank">WindSpots Association</a>.
+CONTENT_CREDITS_SUB_TITLE_DESIGN=Graphic Design
 CONTENT_CREDITS_DESIGN_1=<a href="https://www.sdic.ch" target="_blank">SDIC S.A.</a> - Robert Giddey, Denis Ducret.
 CONTENT_CREDITS_SUB_TITLE_WEATHER_STATION=Weather Stations
-CONTENT_CREDITS_WEATHER_STATION_1=<a href="http://www.windspots.com" target="_blank">Windspots Sàrl</a> - Denis Ducret.
+CONTENT_CREDITS_WEATHER_STATION_1=<a href="http://www.windspots.com" target="_blank">WindSpots Sàrl</a> - Denis Ducret.
